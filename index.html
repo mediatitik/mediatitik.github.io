@@ -2,1004 +2,920 @@
 <html lang="id">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TITIK | Media Pembelajaran SPLDV</title>
-    <style>
-        :root {
-            --navy: #173b68;
-            --blue: #3979bd;
-            --sky: #e8f3ff;
-            --pale: #f5f9fd;
-            --green: #2d9b68;
-            --yellow: #ffc85a;
-            --ink: #26364a;
-            --muted: #718096;
-            --line: #e5edf5;
-            --white: #fff;
-            --shadow: 0 8px 24px rgba(31, 67, 105, .08);
-            --radius: 18px;
-        }
-
-        * {
-            box-sizing: border-box
-        }
-
-        html {
-            scroll-behavior: smooth
-        }
-
-        body {
-            margin: 0;
-            background: #f7f9fc;
-            color: var(--ink);
-            font-family: Arial, Helvetica, sans-serif;
-            line-height: 1.6
-        }
-
-        button {
-            font: inherit;
-            cursor: pointer
-        }
-
-        .top-line {
-            height: 8px;
-            background: var(--green)
-        }
-
-        .container {
-            width: min(1120px, 92%);
-            margin: auto
-        }
-
-        header {
-            background: #fff;
-            border-bottom: 1px solid var(--line);
-            position: sticky;
-            top: 0;
-            z-index: 20
-        }
-
-        .nav {
-            height: 72px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 20px
-        }
-
-        .brand {
-            display: flex;
-            align-items: center;
-            gap: 11px;
-            border: 0;
-            background: none;
-            color: var(--navy);
-            font-size: 25px;
-            font-weight: 900;
-            letter-spacing: 1px
-        }
-
-        .brand-mark {
-            width: 39px;
-            height: 39px;
-            border-radius: 12px;
-            background: var(--green);
-            color: white;
-            display: grid;
-            place-items: center;
-            font-size: 22px
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 8px;
-            align-items: center
-        }
-
-        .nav-links button {
-            border: 0;
-            background: transparent;
-            color: #52657a;
-            padding: 10px 14px;
-            border-radius: 10px;
-            font-weight: 700
-        }
-
-        .nav-links button:hover,
-        .nav-links button.active {
-            background: var(--sky);
-            color: var(--blue)
-        }
-
-        .menu-toggle {
-            display: none;
-            border: 0;
-            background: var(--sky);
-            color: var(--navy);
-            border-radius: 10px;
-            padding: 9px 12px
-        }
-
-        main {
-            padding: 26px 0 45px
-        }
-
-        .hero {
-            min-height: 285px;
-            border-radius: 22px;
-            overflow: hidden;
-            position: relative;
-            background: linear-gradient(110deg, #e5f2ff 0%, #f2f8ff 58%, #d8ecff 100%);
-            display: flex;
-            align-items: center;
-            padding: 38px 5%;
-            box-shadow: var(--shadow)
-        }
-
-        .hero-copy {
-            width: 57%;
-            position: relative;
-            z-index: 2
-        }
-
-        .eyebrow {
-            font-size: 12px;
-            letter-spacing: 1.2px;
-            text-transform: uppercase;
-            color: var(--green);
-            font-weight: 800;
-        }
-
-        h1 {
-            font-size: clamp(34px, 5vw, 55px);
-            line-height: 1.05;
-            color: var(--navy);
-            margin: 8px 0 13px;
-        }
-
-        .hero p {
-            max-width: 520px;
-            color: #536a83;
-            margin: 0 0 22px
-        }
-
-        .hero-actions {
-            display: flex;
-            align-items: center;
-            gap: 11px;
-            flex-wrap: wrap
-        }
-
-        .primary,
-        .secondary {
-            border: 0;
-            border-radius: 999px;
-            padding: 11px 19px;
-            font-weight: 800;
-            transition: .2s
-        }
-
-        .primary {
-            background: var(--yellow);
-            color: #49360b;
-            box-shadow: 0 4px 0 #e6ae3c
-        }
-
-        .primary:hover {
-            transform: translateY(-2px)
-        }
-
-        .secondary {
-            background: #fff;
-            color: var(--blue);
-            border: 1px solid #d7e6f6
-        }
-
-        .hero-art {
-            position: absolute;
-            right: 4%;
-            bottom: 0;
-            width: 38%;
-            height: 92%;
-            display: flex;
-            align-items: center;
-            justify-content: center
-        }
-
-        .art-circle {
-            width: min(260px, 90%);
-            aspect-ratio: 1;
-            border-radius: 50%;
-            background: #c7e3ff;
-            position: absolute;
-            right: 12%;
-            bottom: -18%
-        }
-
-        .math-card {
-            position: relative;
-            background: #fff;
-            border: 2px solid #d8e8f7;
-            border-radius: 16px;
-            padding: 22px 24px;
-            box-shadow: 0 14px 28px #7da4c733;
-            transform: rotate(-7deg);
-            font-weight: 800;
-            color: var(--navy);
-            font-size: 24px;
-        }
-
-        .math-card small {
-            display: block;
-            font-size: 11px;
-            color: var(--muted);
-            font-weight: 600;
-            margin-top: 8px
-        }
-
-        .calculator {
-            position: absolute;
-            right: 0;
-            bottom: 30px;
-            background: #355d86;
-            color: white;
-            padding: 13px;
-            border-radius: 12px;
-            transform: rotate(9deg);
-            box-shadow: var(--shadow);
-            font-size: 23px
-        }
-
-        .section {
-            margin-top: 34px
-        }
-
-        .section-heading {
-            display: flex;
-            justify-content: space-between;
-            align-items: end;
-            gap: 15px;
-            margin-bottom: 15px
-        }
-
-        .section-heading h2 {
-            font-size: 20px;
-            color: var(--navy);
-            margin: 0
-        }
-
-        .section-heading p {
-            margin: 3px 0 0;
-            color: var(--muted);
-            font-size: 13px
-        }
-
-        .text-link {
-            border: 0;
-            background: none;
-            color: var(--blue);
-            font-size: 12px;
-            font-weight: 800
-        }
-
-        .access-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 16px
-        }
-
-        .access-card {
-            border: 1px solid transparent;
-            border-radius: 16px;
-            padding: 19px;
-            min-height: 150px;
-            text-align: left;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            transition: .2s
-        }
-
-        .access-card:hover {
-            transform: translateY(-3px);
-            box-shadow: var(--shadow)
-        }
-
-        .access-card.material {
-            background: #eaf3ff;
-            border-color: #deebfb
-        }
-
-        .access-card.practice {
-            background: #fff8e9;
-            border-color: #f7edda
-        }
-
-        .access-card.evaluation {
-            background: #eaf7f1;
-            border-color: #dcefe6
-        }
-
-        .access-top {
-            display: flex;
-            justify-content: space-between;
-            align-items: center
-        }
-
-        .access-icon {
-            width: 39px;
-            height: 39px;
-            border-radius: 12px;
-            background: #fff;
-            display: grid;
-            place-items: center;
-            font-size: 20px
-        }
-
-        .round-arrow {
-            width: 27px;
-            height: 27px;
-            border-radius: 50%;
-            background: var(--blue);
-            color: white;
-            display: grid;
-            place-items: center;
-            font-weight: bold
-        }
-
-        .practice .round-arrow {
-            background: #f5bd4e;
-            color: #573e08
-        }
-
-        .evaluation .round-arrow {
-            background: #48a77b
-        }
-
-        .access-card h3 {
-            margin: 12px 0 2px;
-            color: var(--navy);
-            font-size: 17px
-        }
-
-        .access-card p {
-            margin: 0;
-            color: #64758a;
-            font-size: 12px
-        }
-
-        .popular-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 13px
-        }
-
-        .popular-card {
-            background: #fff;
-            border: 1px solid var(--line);
-            border-radius: 14px;
-            padding: 15px;
-            display: flex;
-            gap: 12px;
-            align-items: flex-start;
-            box-shadow: 0 3px 12px #294d7010
-        }
-
-        .number {
-            flex: none;
-            width: 32px;
-            height: 32px;
-            border-radius: 10px;
-            background: #e9f3ff;
-            color: var(--blue);
-            display: grid;
-            place-items: center;
-            font-size: 12px;
-            font-weight: 900
-        }
-
-        .popular-card h3 {
-            font-size: 13px;
-            color: var(--navy);
-            margin: 0 0 5px
-        }
-
-        .popular-card p {
-            font-size: 11px;
-            color: var(--muted);
-            margin: 0
-        }
-
-        .popular-card button {
-            border: 0;
-            background: none;
-            color: var(--blue);
-            font-size: 11px;
-            font-weight: 800;
-            padding: 8px 0 0
-        }
-
-        .motivation {
-            margin-top: 55px;
-            border-radius: 16px;
-            padding: 19px 24px;
-            background: linear-gradient(100deg, #e6f3ff, #d9ecff);
-            display: flex;
-            align-items: center;
-            gap: 15px
-        }
-
-        .motivation .target {
-            font-size: 28px
-        }
-
-        .motivation h3 {
-            margin: 0;
-            color: var(--navy);
-            font-size: 15px
-        }
-
-        .motivation p {
-            margin: 2px 0 0;
-            color: #617a95;
-            font-size: 12px
-        }
-
-        footer {
-            background: #fff;
-            border-top: 1px solid var(--line);
-            padding: 23px 0;
-            color: #77869a;
-            font-size: 12px
-        }
-
-        .footer-inner {
-            display: flex;
-            justify-content: space-between;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
-
-        /* Subpages */
-        .page {
-            display: none;
-            min-height: 65vh
-        }
-
-        .page.active {
-            display: block
-        }
-
-        .page-intro {
-            background: linear-gradient(110deg, #eaf4ff, #f7fbff);
-            border-radius: 18px;
-            padding: 24px;
-            margin-bottom: 20px
-        }
-
-        .page-intro h1 {
-            font-size: 30px;
-            margin: 0 0 7px
-        }
-
-        .page-intro p {
-            margin: 0;
-            color: #61758c
-        }
-
-        .back-btn {
-            border: 0;
-            background: none;
-            color: var(--blue);
-            font-weight: 800;
-            padding: 0 0 14px
-        }
-
-        .content-card {
-            background: #fff;
-            border: 1px solid var(--line);
-            border-radius: 16px;
-            padding: 21px;
-            margin-bottom: 15px;
-            box-shadow: 0 4px 14px #294d7008
-        }
-
-        .content-card h2,
-        .content-card h3 {
-            color: var(--navy);
-            margin-top: 0
-        }
-
-        .content-card h3 {
-            font-size: 17px
-        }
-
-        .content-card p,
-        .content-card li {
-            color: #586b80
-        }
-
-        .tag {
-            display: inline-block;
-            background: #edf5ff;
-            color: #3979bd;
-            padding: 4px 9px;
-            border-radius: 20px;
-            font-size: 11px;
-            font-weight: 800;
-            margin: 0 5px 7px 0
-        }
-
-        .formula {
-            background: #f4f8fc;
-            border-left: 4px solid var(--blue);
-            padding: 13px 16px;
-            border-radius: 8px;
-            font-size: 20px;
-            color: var(--navy);
-            font-weight: 800;
-            margin: 12px 0
-        }
-
-        .lesson-list {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 13px
-        }
-
-        .lesson-item {
-            border: 1px solid var(--line);
-            background: white;
-            border-radius: 13px;
-            padding: 16px;
-            text-align: left
-        }
-
-        .lesson-item:hover {
-            border-color: #9fc7ef;
-            background: #f9fcff
-        }
-
-        .lesson-item strong {
-            display: block;
-            color: var(--navy);
-            margin-bottom: 4px
-        }
-
-        .lesson-item span {
-            font-size: 12px;
-            color: var(--muted)
-        }
-
-        .quiz-top {
-            display: flex;
-            justify-content: space-between;
-            gap: 10px;
-            flex-wrap: wrap;
-            color: var(--muted);
-            font-size: 13px;
-            margin-bottom: 13px
-        }
-
-        .progress {
-            height: 8px;
-            border-radius: 10px;
-            background: #edf1f5;
-            overflow: hidden;
-            margin-bottom: 20px
-        }
-
-        .progress span {
-            display: block;
-            height: 100%;
-            width: 0;
-            background: var(--green);
-            transition: width .3s
-        }
-
-        .question {
-            font-size: 18px;
-            font-weight: 800;
-            color: var(--navy);
-            margin: 10px 0 17px
-        }
-
-        .options {
-            display: grid;
-            gap: 10px
-        }
-
-        .option {
-            padding: 12px 14px;
-            border: 1px solid var(--line);
-            border-radius: 11px;
-            background: white;
-            text-align: left;
-            color: #42566d;
-        }
-
-        .option:hover {
-            border-color: #8bb9e8;
-            background: #f7fbff
-        }
-
-        .option.selected {
-            border-color: var(--blue);
-            background: #edf6ff
-        }
-
-        .option.correct {
-            border-color: #5ab889;
-            background: #eefaf3
-        }
-
-        .option.wrong {
-            border-color: #e28b8b;
-            background: #fff2f2
-        }
-
-        .feedback {
-            padding: 12px;
-            border-radius: 10px;
-            margin-top: 13px;
-            font-size: 13px;
-            display: none
-        }
-
-        .feedback.show {
-            display: block
-        }
-
-        .feedback.good {
-            background: #edf9f2;
-            color: #26734c
-        }
-
-        .feedback.bad {
-            background: #fff3ed;
-            color: #9a4d25
-        }
-
-        .quiz-actions {
-            display: flex;
-            justify-content: space-between;
-            gap: 10px;
-            margin-top: 18px
-        }
-
-        .level-tabs {
-            display: flex;
-            gap: 8px;
-            flex-wrap: wrap;
-            margin-bottom: 15px
-        }
-
-        .level-tabs button {
-            border: 1px solid var(--line);
-            background: #fff;
-            border-radius: 30px;
-            padding: 8px 14px;
-            color: #60748a;
-            font-size: 12px;
-            font-weight: 800
-        }
-
-        .level-tabs button.active {
-            background: var(--navy);
-            color: #fff;
-            border-color: var(--navy)
-        }
-
-        .result-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 12px
-        }
-
-        .stat {
-            background: #f5f9fd;
-            border-radius: 13px;
-            padding: 15px
-        }
-
-        .stat span {
-            font-size: 11px;
-            color: var(--muted)
-        }
-
-        .stat strong {
-            display: block;
-            font-size: 25px;
-            color: var(--navy)
-        }
-
-        .chart-wrap {
-            height: 260px;
-            position: relative;
-            margin-top: 12px
-        }
-
-        canvas {
-            width: 100%;
-            height: 100%
-        }
-
-        .empty {
-            padding: 28px;
-            text-align: center;
-            color: var(--muted);
-            background: #f8fafc;
-            border-radius: 12px
-        }
-
-        @media(max-width:760px) {
-            .nav {
-                height: 64px
-            }
-
-            .menu-toggle {
-                display: block
-            }
-
-            .nav-links {
-                display: none;
-                position: absolute;
-                top: 64px;
-                left: 0;
-                right: 0;
-                background: #fff;
-                padding: 12px 4%;
-                border-bottom: 1px solid var(--line);
-                flex-direction: column;
-                align-items: stretch
-            }
-
-            .nav-links.open {
-                display: flex
-            }
-
-            .nav-links button {
-                text-align: left
-            }
-
-            .hero {
-                min-height: 330px;
-                padding: 28px 6%;
-                align-items: flex-start
-            }
-
-            .hero-copy {
-                width: 100%
-            }
-
-            .hero p {
-                max-width: 75%
-            }
-
-            .hero-art {
-                width: 44%;
-                height: 48%;
-                right: 1%;
-                opacity: .8
-            }
-
-            .math-card {
-                font-size: 17px;
-                padding: 15px
-            }
-
-            .calculator {
-                font-size: 17px
-            }
-
-            .access-grid,
-            .popular-grid {
-                grid-template-columns: 1fr
-            }
-
-            .access-card {
-                min-height: 130px
-            }
-
-            .lesson-list {
-                grid-template-columns: 1fr
-            }
-
-            .result-grid {
-                grid-template-columns: 1fr
-            }
-
-            .motivation {
-                margin-top: 35px
-            }
-        }
-
-        @media(min-width:761px) and (max-width:950px) {
-            .popular-grid {
-                grid-template-columns: repeat(2, 1fr)
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TITIK | Media Pembelajaran SPLDV</title>
+<style>
+:root{--navy:#173b68;--blue:#3979bd;--sky:#e8f3ff;--pale:#f5f9fd;--green:#2d9b68;--yellow:#ffc85a;--ink:#26364a;--muted:#718096;--line:#e5edf5;--white:#fff;--shadow:0 8px 24px rgba(31,67,105,.08);--radius:18px}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:#f7f9fc;color:var(--ink);font-family:Arial,Helvetica,sans-serif;line-height:1.6}
+button{font:inherit;cursor:pointer}
+.top-line{height:8px;background:var(--green)}
+.container{width:min(1120px,92%);margin:auto}
+header{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:20}
+.nav{height:72px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.brand{display:flex;align-items:center;gap:11px;border:0;background:none;color:var(--navy);font-size:25px;font-weight:900;letter-spacing:1px}
+.brand-mark{width:39px;height:39px;border-radius:12px;background:var(--green);color:#fff;display:grid;place-items:center;font-size:22px}
+.nav-links{display:flex;gap:8px;align-items:center}
+.nav-links button{border:0;background:transparent;color:#52657a;padding:10px 14px;border-radius:10px;font-weight:700}
+.nav-links button:hover,.nav-links button.active{background:var(--sky);color:var(--blue)}
+.menu-toggle{display:none;border:0;background:var(--sky);color:var(--navy);border-radius:10px;padding:9px 12px}
+main{padding:26px 0 45px}
+.hero{min-height:285px;border-radius:22px;overflow:hidden;position:relative;background:linear-gradient(110deg,#e5f2ff 0%,#f2f8ff 58%,#d8ecff 100%);display:flex;align-items:center;padding:38px 5%;box-shadow:var(--shadow)}
+.hero-copy{width:57%;position:relative;z-index:2}
+.eyebrow{font-size:12px;letter-spacing:1.2px;text-transform:uppercase;color:var(--green);font-weight:800}
+h1{font-size:clamp(34px,5vw,55px);line-height:1.05;color:var(--navy);margin:8px 0 13px}
+.hero p{max-width:520px;color:#536a83;margin:0 0 22px}
+.hero-actions{display:flex;align-items:center;gap:11px;flex-wrap:wrap}
+.primary,.secondary{border:0;border-radius:999px;padding:11px 19px;font-weight:800;transition:.2s}
+.primary{background:var(--yellow);color:#49360b;box-shadow:0 4px 0 #e6ae3c}
+.primary:hover{transform:translateY(-2px)}
+.primary:disabled{opacity:.5;cursor:not-allowed;transform:none}
+.secondary{background:#fff;color:var(--blue);border:1px solid #d7e6f6}
+.hero-art{position:absolute;right:4%;bottom:0;width:38%;height:92%;display:flex;align-items:center;justify-content:center}
+.art-circle{width:min(260px,90%);aspect-ratio:1;border-radius:50%;background:#c7e3ff;position:absolute;right:12%;bottom:-18%}
+.math-card{position:relative;background:#fff;border:2px solid #d8e8f7;border-radius:16px;padding:22px 24px;box-shadow:0 14px 28px #7da4c733;transform:rotate(-7deg);font-weight:800;color:var(--navy);font-size:24px}
+.math-card small{display:block;font-size:11px;color:var(--muted);font-weight:600;margin-top:8px}
+.calculator{position:absolute;right:0;bottom:30px;background:#355d86;color:#fff;padding:13px;border-radius:12px;transform:rotate(9deg);box-shadow:var(--shadow);font-size:23px}
+.section{margin-top:34px}
+.section-heading{display:flex;justify-content:space-between;align-items:end;gap:15px;margin-bottom:15px}
+.section-heading h2{font-size:20px;color:var(--navy);margin:0}
+.section-heading p{margin:3px 0 0;color:var(--muted);font-size:13px}
+.text-link{border:0;background:none;color:var(--blue);font-size:12px;font-weight:800}
+.access-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.access-card{border:1px solid transparent;border-radius:16px;padding:19px;min-height:150px;text-align:left;display:flex;flex-direction:column;justify-content:space-between;transition:.2s}
+.access-card:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
+.access-card.material{background:#eaf3ff;border-color:#deebfb}
+.access-card.practice{background:#fff8e9;border-color:#f7edda}
+.access-card.evaluation{background:#eaf7f1;border-color:#dcefe6}
+.access-top{display:flex;justify-content:space-between;align-items:center}
+.access-icon{width:39px;height:39px;border-radius:12px;background:#fff;display:grid;place-items:center;font-size:20px}
+.round-arrow{width:27px;height:27px;border-radius:50%;background:var(--blue);color:#fff;display:grid;place-items:center;font-weight:700}
+.practice .round-arrow{background:#f5bd4e;color:#573e08}
+.evaluation .round-arrow{background:#48a77b}
+.access-card h3{margin:12px 0 2px;color:var(--navy);font-size:17px}
+.access-card p{margin:0;color:#64758a;font-size:12px}
+.popular-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:13px}
+.popular-card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:15px;display:flex;gap:12px;align-items:flex-start;box-shadow:0 3px 12px #294d7010}
+.number{flex:none;width:32px;height:32px;border-radius:10px;background:#e9f3ff;color:var(--blue);display:grid;place-items:center;font-size:12px;font-weight:900}
+.popular-card h3{font-size:13px;color:var(--navy);margin:0 0 5px}
+.popular-card p{font-size:11px;color:var(--muted);margin:0}
+.popular-card button{border:0;background:none;color:var(--blue);font-size:11px;font-weight:800;padding:8px 0 0}
+.motivation{margin-top:55px;border-radius:16px;padding:19px 24px;background:linear-gradient(100deg,#e6f3ff,#d9ecff);display:flex;align-items:center;gap:15px}
+.motivation .target{font-size:28px}
+.motivation h3{margin:0;color:var(--navy);font-size:15px}
+.motivation p{margin:2px 0 0;color:#617a95;font-size:12px}
+footer{background:#fff;border-top:1px solid var(--line);padding:23px 0;color:#77869a;font-size:12px}
+.footer-inner{display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap}
+.page{display:none;min-height:65vh}.page.active{display:block}
+.page-intro{background:linear-gradient(110deg,#eaf4ff,#f7fbff);border-radius:18px;padding:24px;margin-bottom:20px}
+.page-intro h1{font-size:30px;margin:0 0 7px}
+.page-intro p{margin:0;color:#61758c}
+.back-btn{border:0;background:none;color:var(--blue);font-weight:800;padding:0 0 14px}
+.content-card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:21px;margin-bottom:15px;box-shadow:0 4px 14px #294d7008}
+.content-card h2,.content-card h3{color:var(--navy);margin-top:0}
+.content-card h3{font-size:17px}
+.content-card p,.content-card li{color:#586b80}
+.tag{display:inline-block;background:#edf5ff;color:#3979bd;padding:4px 9px;border-radius:20px;font-size:11px;font-weight:800;margin:0 5px 7px 0}
+.formula{background:#f4f8fc;border-left:4px solid var(--blue);padding:13px 16px;border-radius:8px;font-size:20px;color:var(--navy);font-weight:800;margin:12px 0}
+.lesson-list{display:grid;grid-template-columns:repeat(2,1fr);gap:13px}
+.lesson-item{border:1px solid var(--line);background:#fff;border-radius:13px;padding:16px;text-align:left}
+.lesson-item:hover{border-color:#9fc7ef;background:#f9fcff}
+.lesson-item strong{display:block;color:var(--navy);margin-bottom:4px}
+.lesson-item span{font-size:12px;color:var(--muted)}
+.quiz-top{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;color:var(--muted);font-size:13px;margin-bottom:13px}
+.progress{height:8px;border-radius:10px;background:#edf1f5;overflow:hidden;margin-bottom:20px}
+.progress span{display:block;height:100%;width:0;background:var(--green);transition:width .3s}
+.question{font-size:18px;font-weight:800;color:var(--navy);margin:10px 0 17px}
+.options{display:grid;gap:10px}
+.option{padding:12px 14px;border:1px solid var(--line);border-radius:11px;background:#fff;text-align:left;color:#42566d}
+.option:hover{border-color:#8bb9e8;background:#f7fbff}
+.option.selected{border-color:var(--blue);background:#edf6ff}
+.option.correct{border-color:#5ab889;background:#eefaf3}
+.option.wrong{border-color:#e28b8b;background:#fff2f2}
+.feedback{padding:12px;border-radius:10px;margin-top:13px;font-size:13px;display:none}
+.feedback.show{display:block}
+.feedback.good{background:#edf9f2;color:#26734c}
+.feedback.bad{background:#fff3ed;color:#9a4d25}
+.quiz-actions{display:flex;justify-content:space-between;gap:10px;margin-top:18px}
+.level-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:15px}
+.level-tabs button{border:1px solid var(--line);background:#fff;border-radius:30px;padding:8px 14px;color:#60748a;font-size:12px;font-weight:800}
+.level-tabs button.active{background:var(--navy);color:#fff;border-color:var(--navy)}
+.result-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.stat{background:#f5f9fd;border-radius:13px;padding:15px}
+.stat span{font-size:11px;color:var(--muted)}
+.stat strong{display:block;font-size:25px;color:var(--navy)}
+.chart-wrap{height:260px;position:relative;margin-top:12px}
+canvas{width:100%;height:100%}
+.empty{padding:28px;text-align:center;color:var(--muted);background:#f8fafc;border-radius:12px}
+
+/* ===== Materi interaktif ===== */
+.mp-head{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:12px}
+.dots{display:flex;gap:6px}.dots i{width:28px;height:6px;border-radius:6px;background:#e1e9f2}.dots i.on{background:var(--green)}
+.row{display:flex;gap:12px;flex-wrap:wrap}
+.nota{background:#fffdf5;border:2px dashed #f0d9a0;border-radius:14px;padding:14px;flex:1;min-width:210px}
+.stepper{display:inline-flex;align-items:center;gap:8px;background:#f4f8fc;border-radius:30px;padding:4px 8px}
+.stepper button{width:30px;height:30px;border-radius:50%;border:0;background:var(--blue);color:#fff;font-weight:900}
+.chip{display:inline-block;background:#fff;border:2px solid #bcd6f2;border-radius:10px;padding:7px 12px;margin:4px;font-weight:800;color:var(--navy);cursor:grab;user-select:none}
+.chip.sel{background:var(--yellow);border-color:#e6ae3c}
+.slot{display:inline-block;min-width:90px;min-height:38px;border:2px dashed #9fc7ef;border-radius:10px;padding:6px 10px;margin:3px;background:#f7fbff;vertical-align:middle;text-align:center;font-weight:800;color:var(--green)}
+.slot.ok{border-style:solid;border-color:#5ab889;background:#eefaf3}
+.msg{padding:10px 12px;border-radius:10px;margin:10px 0;font-size:13px;background:#f4f8fc;color:#46607a}
+.msg.good{background:#edf9f2;color:#26734c}.msg.bad{background:#fff3ed;color:#9a4d25}
+.mini{border:1px solid var(--line);border-radius:10px;padding:8px 10px;width:100px;font:inherit}
+.story{border-left:4px solid var(--yellow);padding-left:14px;margin:14px 0}
+.vgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:14px}
+.vcard{display:block;text-decoration:none;background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden;color:inherit;transition:.2s}
+.vcard:hover{box-shadow:var(--shadow);transform:translateY(-2px)}
+.vcard img{width:100%;aspect-ratio:16/9;object-fit:cover;background:#dbe8f5;display:block}
+.vcard div{padding:11px 13px}.vcard b{color:var(--navy);font-size:13px;display:block}.vcard span{font-size:11px;color:var(--muted)}
+
+@media(max-width:760px){
+.nav{height:64px}.menu-toggle{display:block}
+.nav-links{display:none;position:absolute;top:64px;left:0;right:0;background:#fff;padding:12px 4%;border-bottom:1px solid var(--line);flex-direction:column;align-items:stretch}
+.nav-links.open{display:flex}.nav-links button{text-align:left}
+.hero{min-height:330px;padding:28px 6%;align-items:flex-start}
+.hero-copy{width:100%}.hero p{max-width:75%}
+.hero-art{width:44%;height:48%;right:1%;opacity:.8}
+.math-card{font-size:17px;padding:15px}.calculator{font-size:17px}
+.access-grid,.popular-grid,.lesson-list,.result-grid{grid-template-columns:1fr}
+.access-card{min-height:130px}.motivation{margin-top:35px}.nota{min-width:100%}}
+@media(min-width:761px) and (max-width:950px){.popular-grid{grid-template-columns:repeat(2,1fr)}}
+.stp{display:flex;gap:12px;padding:14px 0;border-top:1px dashed var(--line)}
+.stp .sn{flex:none;width:30px;height:30px;border-radius:50%;background:var(--sky);color:var(--blue);display:grid;place-items:center;font-weight:900;font-size:13px}
+.stp.done .sn{background:var(--green);color:#fff}
+.sb{flex:1;min-width:0}
+.sec{border:1px solid var(--line);border-radius:16px;padding:18px;margin:16px 0;background:#fcfdff}
+.sec h3{display:flex;gap:10px;align-items:center;margin:0 0 6px}
+.sec h3 i{font-style:normal;background:var(--navy);color:#fff;width:28px;height:28px;border-radius:50%;display:grid;place-items:center;font-size:13px}
+.kbar{height:10px;border-radius:10px;background:#e5edf5;overflow:hidden;margin-top:6px}
+.kbar span{display:block;height:100%;width:0;background:linear-gradient(90deg,#2d9b68,#6ccf9f);transition:width .4s}
+.kprogw{position:sticky;top:72px;background:#fff;padding:10px 0;z-index:5;font-size:13px}
+.defbox{background:linear-gradient(110deg,#eaf4ff,#f4fbf7);border:2px solid #cfe3f7;border-radius:16px;padding:18px}
+.flow{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin:10px 0}
+.flow span{background:#edf5ff;color:var(--navy);border-radius:20px;padding:5px 12px;font-size:12px;font-weight:800}
+.flow b{color:var(--muted)}
+details.case{border:1px solid var(--line);border-radius:14px;padding:14px 16px;margin-bottom:12px;background:#fff}
+details.case summary{cursor:pointer;font-weight:800;color:var(--navy)}
+.badge{background:var(--yellow);color:#49360b;border-radius:20px;padding:2px 10px;font-size:11px;margin-left:8px}
+.gh{fill:transparent;cursor:pointer}.gh:hover{fill:#ffc85a99}
+</style>
 </head>
 
 <body>
-    <div class="top-line"></div>
-    <header>
-        <div class="container nav"> <button class="brand" onclick="showPage('home')" aria-label="Kembali ke beranda">
-                <span class="brand-mark">∑</span><span>TITIK</span> </button> <button class="menu-toggle"
-                id="menuToggle" aria-label="Buka menu">☰</button>
-            <nav class="nav-links" id="navLinks"> <button class="active" data-page="home"
-                    onclick="showPage('home')">Beranda</button> <button data-page="materi"
-                    onclick="showPage('materi')">Materi</button> <button data-page="latihan"
-                    onclick="showPage('latihan')">Latihan</button> <button data-page="evaluasi"
-                    onclick="showPage('evaluasi')">Evaluasi</button> </nav>
-        </div>
-    </header>
-    <main class="container"> <!-- BERANDA -->
-        <section class="page active" id="home">
-            <section class="hero">
-                <div class="hero-copy">
-                    <div class="eyebrow">Media Pembelajaran Matematika • Kelas IX SMP</div>
-                    <h1>Selamat Datang di<br>TITIK.</h1>
-                    <p>Temukan cara mudah memahami Sistem Persamaan Linear Dua Variabel (SPLDV). Belajar, berlatih, dan
-                        temukan jawabannya bersama TITIK.</p>
-                    <div class="hero-actions"> <button class="primary" onclick="showPage('materi')">Mulai Belajar
-                            <span>➜</span></button> <button class="secondary" id="soundButton" onclick="playWelcome()">
-                            🔊 Dengarkan Sambutan</button> </div>
-                </div>
-                <div class="hero-art" aria-hidden="true">
-                    <div class="art-circle"></div>
-                    <div class="math-card">2x + 3y = 12<small>Temukan nilai x dan y!</small></div>
-                    <div class="calculator">▦<br><small style="font-size:9px;color:#dcecff">123 ×</small></div>
-                </div>
-            </section>
-            <section class="section">
-                <div class="section-heading">
-                    <div>
-                        <h2>Akses Pembelajaran</h2>
-                        <p>Pilih menu yang ingin kamu pelajari.</p>
-                    </div>
-                </div>
-                <div class="access-grid"> <button class="access-card material" onclick="showPage('materi')">
-                        <div class="access-top"><span class="access-icon"> 📘 </span><span class="round-arrow">›</span>
-                        </div>
-                        <div>
-                            <h3>Materi</h3>
-                            <p>Pelajari konsep dan metode penyelesaian SPLDV secara bertahap.</p>
-                        </div>
-                    </button> <button class="access-card practice" onclick="showPage('latihan')">
-                        <div class="access-top"><span class="access-icon"> ✏ </span><span class="round-arrow">›</span>
-                        </div>
-                        <div>
-                            <h3>Latihan</h3>
-                            <p>Asah pemahaman melalui soal dari tingkat dasar hingga HOTS.</p>
-                        </div>
-                    </button> <button class="access-card evaluation" onclick="showPage('evaluasi')">
-                        <div class="access-top"><span class="access-icon">▣</span><span class="round-arrow">›</span>
-                        </div>
-                        <div>
-                            <h3>Evaluasi</h3>
-                            <p>Lihat hasil latihan dan kenali materi yang perlu ditingkatkan.</p>
-                        </div>
-                    </button> </div>
-            </section>
-            <section class="section">
-                <div class="section-heading">
-                    <div>
-                        <h2> 📚 Materi yang Tersedia</h2>
-                        <p>Materi pilihan untuk memulai perjalanan belajarmu.</p>
-                    </div> <button class="text-link" onclick="showPage('materi')">Lihat Semua →</button>
-                </div>
-                <div class="popular-grid">
-                    <article class="popular-card"><span class="number">01</span>
-                        <div>
-                            <h3>Pengertian dan Bentuk Umum SPLDV</h3>
-                            <p>Mengenal persamaan linear dua variabel.</p><button
-                                onclick="openLesson('pengertian')">Pelajari sekarang →</button>
-                        </div>
-                    </article>
-                    <article class="popular-card"><span class="number">02</span>
-                        <div>
-                            <h3>Metode Penyelesaian SPLDV</h3>
-                            <p>Memahami metode substitusi dan eliminasi.</p><button
-                                onclick="openLesson('metode')">Pelajari sekarang →</button>
-                        </div>
-                    </article>
-                    <article class="popular-card"><span class="number">03</span>
-                        <div>
-                            <h3>Penerapan SPLDV</h3>
-                            <p>Menyelesaikan masalah dalam kehidupan sehari-hari.</p><button
-                                onclick="openLesson('penerapan')">Pelajari sekarang →</button>
-                        </div>
-                    </article>
-                </div>
-            </section>
-            <section class="motivation"><span class="target"> 🎯 </span>
-                <div>
-                    <h3>Sudah siap menguji pemahamanmu?</h3>
-                    <p>Kerjakan latihan dan evaluasi untuk melihat sejauh mana perkembangan belajarmu.</p>
-                </div>
-            </section>
-        </section> <!-- MATERI -->
-        <section class="page" id="materi"> <button class="back-btn" onclick="showPage('home')">← Kembali ke
-                Beranda</button>
-            <div class="page-intro">
-                <div class="eyebrow">Ruang Belajar</div>
-                <h1>Materi SPLDV</h1>
-                <p>Pelajari setiap bagian secara berurutan. Pahami konsepnya, lalu coba contoh soalnya.</p>
-            </div>
-            <div class="lesson-list"> <button class="lesson-item" onclick="openLesson('pengertian')"><strong>01.
-                        Pengertian dan Bentuk Umum SPLDV</strong><span>Konsep persamaan linear dua variabel dan
-                        penyelesaiannya.</span></button> <button class="lesson-item"
-                    onclick="openLesson('model')"><strong>02. Membuat Model Matematika</strong><span>Mengubah informasi
-                        dari soal cerita menjadi dua persamaan.</span></button> <button class="lesson-item"
-                    onclick="openLesson('grafik')"><strong>03. Metode Grafik</strong><span>Menentukan penyelesaian
-                        melalui titik potong dua garis.</span></button> <button class="lesson-item"
-                    onclick="openLesson('substitusi')"><strong>04. Metode Substitusi</strong><span>Mengganti salah satu
-                        variabel dengan bentuk yang setara.</span></button> <button class="lesson-item"
-                    onclick="openLesson('eliminasi')"><strong>05. Metode Eliminasi</strong><span>Menghilangkan salah
-                        satu variabel untuk memperoleh variabel lain.</span></button> <button class="lesson-item"
-                    onclick="openLesson('metode')"><strong>06. Metode Campuran</strong><span>Menggabungkan eliminasi dan
-                        substitusi.</span></button> <button class="lesson-item"
-                    onclick="openLesson('penerapan')"><strong>07. Penerapan SPLDV</strong><span>Menyelesaikan masalah
-                        kontekstual dalam kehidupan sehari-hari.</span></button> </div>
-            <div id="lessonDetail" style="margin-top:18px"></div>
-        </section> <!-- LATIHAN -->
-        <section class="page" id="latihan"> <button class="back-btn" onclick="showPage('home')">← Kembali ke
-                Beranda</button>
-            <div class="page-intro">
-                <div class="eyebrow">Uji Pemahaman</div>
-                <h1>Latihan SPLDV</h1>
-                <p>Pilih tingkat latihan. Jawaban dan hasil latihan akan tersimpan pada perangkat yang kamu gunakan.</p>
-            </div>
-            <div class="level-tabs"> <button class="active" data-level="dasar" onclick="startQuiz('dasar')">Tingkat
-                    Dasar</button> <button data-level="menengah" onclick="startQuiz('menengah')">Tingkat
-                    Menengah</button> <button data-level="hots" onclick="startQuiz('hots')">Tingkat HOTS</button> </div>
-            <div class="content-card" id="quizCard">
-                <div class="quiz-top"><span id="levelLabel">Tingkat Dasar</span><span id="questionCount">Soal 1 dari
-                        3</span></div>
-                <div class="progress"><span id="progressBar"></span></div>
-                <div class="tag">Pilih satu jawaban yang paling tepat</div>
-                <div class="question" id="questionText"></div>
-                <div class="options" id="options"></div>
-                <div class="feedback" id="feedback"></div>
-                <div class="quiz-actions"><button class="secondary" onclick="showPage('materi')">Buka
-                        Materi</button><button class="primary" id="nextButton" onclick="nextQuestion()" disabled>Periksa
-                        Jawaban</button></div>
-            </div>
-        </section> <!-- EVALUASI -->
-        <section class="page" id="evaluasi"> <button class="back-btn" onclick="showPage('home')">← Kembali ke
-                Beranda</button>
-            <div class="page-intro">
-                <div class="eyebrow">Rekap Perkembangan</div>
-                <h1>Evaluasi Belajar</h1>
-                <p>Ringkasan hasil latihan yang telah kamu kerjakan pada perangkat ini.</p>
-            </div>
-            <div class="result-grid">
-                <div class="stat"><span>Latihan diselesaikan</span><strong id="totalAttempt">0</strong></div>
-                <div class="stat"><span>Rata-rata nilai</span><strong id="averageScore">–</strong></div>
-                <div class="stat"><span>Nilai tertinggi</span><strong id="bestScore">–</strong></div>
-            </div>
-            <div class="content-card" style="margin-top:16px">
-                <h3>Grafik Hasil Berdasarkan Tingkat</h3>
-                <p style="font-size:12px">Grafik memperlihatkan rata-rata nilai pada setiap tingkat latihan. Bagian
-                    dengan nilai lebih rendah dapat menjadi prioritas belajar berikutnya.</p>
-                <div class="chart-wrap"><canvas id="resultChart" aria-label="Grafik nilai latihan"></canvas></div>
-                <div id="chartEmpty" class="empty">Belum ada hasil latihan. Kerjakan latihan terlebih dahulu untuk
-                    melihat grafik perkembanganmu.</div>
-            </div>
-            <div class="content-card">
-                <h3>Riwayat Pengerjaan</h3>
-                <div id="historyList" class="empty">Belum ada riwayat pengerjaan.</div>
-            </div> <button class="secondary" onclick="clearResults()">Hapus riwayat pada perangkat ini</button>
-        </section>
-    </main>
-    <footer>
-        <div class="container footer-inner"><span><strong style="color:var(--navy)">TITIK</strong> · Media Pembelajaran
-                Matematika SPLDV Kelas IX</span><span>Belajar hari ini, temukan jawaban esok hari. © 2026</span></div>
-    </footer>
-    <script>   const welcomeText = "Selamat datang di TITIK, karena dengan mengetahui TITIK maka kamu akan menemukan jawabannya. Selamat belajar dan sampai jumpa pada nilai sempurna kamu."; let currentLevel = "dasar", currentQuestion = 0, selectedAnswer = null, answered = false, currentScore = 0; const levels = { dasar: [{ q: "Bentuk umum persamaan linear dua variabel adalah ...", o: ["ax + by = c", "ax² + by = c", "ax + b = 0", "ax³ + by = c"], a: 0, e: "SPLDV terdiri atas dua persamaan linear yang masing-masing memiliki dua variabel." }, { q: "Manakah pasangan yang merupakan solusi dari x + y = 7 dan x − y = 1?", o: ["(3, 4)", "(4, 3)", "(5, 2)", "(2, 5)"], a: 1, e: "Pasangan (4, 3) memenuhi kedua persamaan: 4 + 3 = 7 dan 4 − 3 = 1." }, { q: "Jika x = 2 dan y = 3, nilai 2x + y adalah ...", o: ["5", "6", "7", "8"], a: 2, e: "Substitusikan x = 2 dan y = 3: 2(2) + 3 = 7." }], menengah: [{ q: "Diketahui x + y = 10 dan x − y = 2. Nilai x adalah ...", o: ["4", "5", "6", "8"], a: 2, e: "Jumlahkan kedua persamaan: 2x = 12, sehingga x = 6." }, { q: "Diketahui 2x + y = 11 dan x + y = 7. Nilai y adalah ...", o: ["2", "3", "4", "5"], a: 2, e: "Kurangkan persamaan pertama dengan kedua: x = 4. Maka y = 7 − 4 = 3. Jadi pilihan yang benar adalah 3.", fix: 1 }, { q: "Harga 2 buku dan 1 pensil adalah Rp11.000. Harga 1 buku dan 1 pensil Rp7.000. Harga satu buku adalah ...", o: ["Rp3.000", "Rp4.000", "Rp5.000", "Rp6.000"], a: 1, e: "Misalkan b = harga buku dan p = harga pensil. 2b+p=11.000 dan b+p=7.000. Selisihnya b=4.000." }], hots: [{ q: "Di kantin, 2 roti dan 3 susu berharga Rp24.000, sedangkan 3 roti dan 2 susu berharga Rp26.000. Berapa harga satu roti?", o: ["Rp4.000", "Rp5.000", "Rp6.000", "Rp7.000"], a: 1, e: "Misalkan r roti dan s susu (ribuan). 2r+3s=24 dan 3r+2s=26. Eliminasi menghasilkan r=6. Jadi harga roti Rp6.000.", fix: 2 }, { q: "Jumlah dua bilangan adalah 18. Bilangan pertama 4 lebih besar daripada bilangan kedua. Pasangan bilangan tersebut adalah ...", o: ["(10, 8)", "(11, 7)", "(12, 6)", "(13, 5)"], a: 1, e: "Misalkan x+y=18 dan x−y=4. Jumlahkan: 2x=22, x=11, sehingga y=7." }, { q: "Sebuah tempat parkir berisi 20 kendaraan berupa mobil dan sepeda motor. Jumlah seluruh rodanya 56. Jika mobil memiliki 4 roda dan motor 2 roda, banyak mobil adalah ...", o: ["6", "7", "8", "9"], a: 2, e: "Misalkan m mobil dan s motor. m+s=20 serta 4m+2s=56. Kurangkan persamaan kedua dengan 2(m+s)=40, diperoleh 2m=16 sehingga m=8." }] }; const lessons = { pengertian: { title: "Pengertian dan Bentuk Umum SPLDV", body: `<p>Sistem Persamaan Linear Dua Variabel (SPLDV) adalah dua persamaan linear yang memiliki dua variabel dan harus dipenuhi secara bersamaan.</p><div class="formula">a₁x + b₁y = c₁<br>a₂x + b₂y = c₂</div><p><b>x</b> dan <b>y</b> merupakan variabel, sedangkan a, b, dan c merupakan konstanta. Solusi SPLDV adalah pasangan nilai (x, y) yang memenuhi kedua persamaan.</p><h3>Contoh</h3><p>x + y = 7 dan x − y = 1 memiliki solusi x = 4 dan y = 3 karena kedua persamaan terpenuhi.</p>` }, model: { title: "Membuat Model Matematika", body: `<p>Model matematika dibuat dengan mengubah informasi pada soal cerita menjadi persamaan.</p><ol><li>Tentukan dua besaran yang belum diketahui.</li><li>Misalkan besaran tersebut dengan variabel x dan y.</li><li>Ubah informasi soal menjadi dua persamaan.</li><li>Periksa apakah persamaan sudah sesuai dengan informasi soal.</li></ol><p>Contoh: jumlah dua bilangan adalah 12 dan selisihnya 2. Modelnya adalah x + y = 12 dan x − y = 2.</p>` }, grafik: { title: "Metode Grafik", body: `<p>Metode grafik dilakukan dengan menggambar dua garis pada bidang koordinat. Titik potong kedua garis merupakan penyelesaian SPLDV.</p><ol><li>Tentukan minimal dua titik pada setiap persamaan.</li><li>Gambarkan kedua garis pada bidang koordinat.</li><li>Amati titik perpotongan kedua garis.</li></ol><p>Jika kedua garis berpotongan di (x, y), pasangan tersebut merupakan solusi SPLDV.</p>` }, substitusi: { title: "Metode Substitusi", body: `<p>Metode substitusi dilakukan dengan menyatakan satu variabel dalam bentuk variabel lain, kemudian menggantikannya ke persamaan kedua.</p><div class="formula">x + y = 7 → x = 7 − y</div><p>Jika persamaan lainnya adalah x − y = 1, substitusikan x = 7 − y:</p><div class="formula">(7 − y) − y = 1<br>6 = 2y<br>y = 3, sehingga x = 4</div>` }, eliminasi: { title: "Metode Eliminasi", body: `<p>Metode eliminasi bertujuan menghilangkan salah satu variabel dengan menjumlahkan atau mengurangkan dua persamaan yang koefisiennya telah disamakan.</p><div class="formula">x + y = 7<br>x − y = 1<br>──────── +<br>2x = 8 → x = 4</div><p>Substitusikan x = 4 ke persamaan pertama sehingga y = 3. Jadi, solusinya adalah (4, 3).</p>` }, metode: { title: "Metode Campuran", body: `<p>Metode campuran menggabungkan eliminasi dan substitusi. Pertama, gunakan eliminasi untuk memperoleh salah satu variabel. Selanjutnya, substitusikan nilai tersebut ke salah satu persamaan untuk menentukan variabel lainnya.</p><p>Metode ini sering digunakan karena dapat membuat proses perhitungan lebih ringkas.</p>` }, penerapan: { title: "Penerapan SPLDV", body: `<p>SPLDV dapat digunakan untuk menyelesaikan berbagai persoalan sehari-hari, misalnya menentukan harga barang, jumlah kendaraan, umur, atau jumlah benda.</p><h3>Contoh masalah</h3><p>Dua buku dan satu pensil berharga Rp11.000, sedangkan satu buku dan satu pensil berharga Rp7.000. Dengan memisalkan harga buku sebagai x dan harga pensil sebagai y, diperoleh:</p><div class="formula">2x + y = 11.000<br>x + y = 7.000</div><p>Dengan eliminasi, diperoleh x = 4.000. Jadi, harga satu buku adalah Rp4.000.</p>` } }; function showPage(id) { document.querySelectorAll(".page").forEach(p => p.classList.toggle("active", p.id === id)); document.querySelectorAll(".nav-links button").forEach(b => b.classList.toggle("active", b.dataset.page === id)); document.getElementById("navLinks").classList.remove("open"); if (id === "evaluasi") renderEvaluation(); window.scrollTo({ top: 0, behavior: "smooth" }); } document.getElementById("menuToggle").addEventListener("click", () => document.getElementById("navLinks").classList.toggle("open")); function playWelcome() { if (!("speechSynthesis" in window)) { alert("Browser ini belum mendukung fitur suara."); return; } window.speechSynthesis.cancel(); const utterance = new SpeechSynthesisUtterance(welcomeText); utterance.lang = "id-ID"; utterance.rate = .92; utterance.pitch = 1; document.getElementById("soundButton").textContent = " 🔊 Sedang Memutar..."; utterance.onend = () => document.getElementById("soundButton").textContent = " 🔊 Dengarkan Sambutan"; utterance.onerror = () => document.getElementById("soundButton").textContent = " 🔊 Dengarkan Sambutan"; window.speechSynthesis.speak(utterance); } function openLesson(key) { const lesson = lessons[key]; if (!lesson) return; document.getElementById("lessonDetail").innerHTML = `<article class="content-card"><button class="back-btn" onclick="document.getElementById('lessonDetail').innerHTML=''">✕ Tutup materi</button><h2>${lesson.title}</h2>${lesson.body}<button class="primary" onclick="showPage('latihan')">Coba Latihan →</button></article>`; showPage("materi"); setTimeout(() => document.getElementById("lessonDetail").scrollIntoView({ behavior: "smooth", block: "start" }), 100); } function startQuiz(level) { currentLevel = level; currentQuestion = 0; selectedAnswer = null; answered = false; currentScore = 0; document.querySelectorAll(".level-tabs button").forEach(b => b.classList.toggle("active", b.dataset.level === level)); renderQuestion(); } function renderQuestion() { const list = levels[currentLevel], item = list[currentQuestion]; document.getElementById("levelLabel").textContent = "Tingkat " + ({ dasar: "Dasar", menengah: "Menengah", hots: "HOTS" }[currentLevel]); document.getElementById("questionCount").textContent = `Soal ${currentQuestion + 1} dari ${list.length}`; document.getElementById("progressBar").style.width = ((currentQuestion) / list.length * 100) +"%"; document.getElementById("questionText").textContent = item.q; document.getElementById("options").innerHTML = item.o.map((opt, i) => `<button class="option" onclick="chooseAnswer(${i})">${String.fromCharCode(65 + i)}. ${opt}</button>`).join(""); document.getElementById("feedback").className = "feedback"; document.getElementById("feedback").textContent = ""; document.getElementById("nextButton").disabled = true; document.getElementById("nextButton").textContent = "Periksa Jawaban"; selectedAnswer = null; answered = false; } function chooseAnswer(index) { if (answered) return; selectedAnswer = index; document.querySelectorAll(".option").forEach((b, i) => b.classList.toggle("selected", i === index)); document.getElementById("nextButton").disabled = false; } function nextQuestion() { const list = levels[currentLevel], item = list[currentQuestion]; if (!answered) { if (selectedAnswer === null) return; answered = true; const correct = selectedAnswer === (item.fix ?? item.a); if (correct) currentScore++; document.querySelectorAll(".option").forEach((b, i) => { if (i === (item.fix ?? item.a)) b.classList.add("correct"); else if (i === selectedAnswer) b.classList.add("wrong"); }); const fb = document.getElementById("feedback"); fb.className = "feedback show " + (correct ? "good" : "bad"); fb.textContent = (correct ? "Benar! " : "Belum tepat. ") + item.e; document.getElementById("nextButton").textContent = currentQuestion === list.length - 1 ? "Lihat Hasil" : "Soal Berikutnya"; return; } if (currentQuestion < list.length - 1) { currentQuestion++; renderQuestion(); } else finishQuiz(); } function finishQuiz() { const score = Math.round(currentScore / levels[currentLevel].length * 100); const history = JSON.parse(localStorage.getItem("titikResults") || "[]"); history.push({ level: currentLevel, score, date: new Date().toLocaleString("id-ID") }); localStorage.setItem("titikResults", JSON.stringify(history)); document.getElementById("quizCard").innerHTML = `<div style="text-align:center;padding:24px 5px"><div style="font-size:44px"> 🎉 </div><h2 style="color:var(--navy)">Latihan Selesai!</h2><p>Nilai latihan tingkat ${currentLevel.toUpperCase()} kamu:</p><div style="font-size:54px;font-weight:900;color:var(--green)">${score}</div ><p>Kamu menjawab benar ${currentScore} dari ${levels[currentLevel].length} soal.</p><button class="primary" onclick="restoreQuizCard();startQuiz('${currentLevel}')">Ulangi Latihan</button> <button class="secondary" onclick="showPage('evaluasi')">Lihat Evaluasi</button></div>`; } function restoreQuizCard() { document.getElementById("quizCard").innerHTML = `<div class="quiz-top"><span id="levelLabel"></span><span id="questionCount"></span></div><div class="progress"><span id="progressBar"></span></div><div class="tag">Pilih satu jawaban yang paling tepat</div><div class="question" id="questionText"></div><div class="options" id="options"></div><div class="feedback" id="feedback"></div><div class="quiz-actions"><button class="secondary" onclick="showPage('materi')">Buka Materi</button><button class="primary" id="nextButton" onclick="nextQuestion()" disabled>Periksa Jawaban</button></div>`; } function renderEvaluation() { const data = JSON.parse(localStorage.getItem("titikResults") || "[]"); document.getElementById("totalAttempt").textContent = data.length; document.getElementById("averageScore").textContent = data.length ? Math.round(data.reduce((a, b) => a + b.score, 0) / data.length):"–"; document.getElementById("bestScore").textContent = data.length ? Math.max(...data.map(x => x.score)) : "–"; const names = { dasar: "Dasar", menengah: "Menengah", hots: "HOTS" }; const history = document.getElementById("historyList"); if (!data.length) { history.className = "empty"; history.textContent = "Belum ada riwayat pengerjaan."; } else { history.className = ""; history.innerHTML = [...data].reverse().map((x, i) => `<div style="display:flex;justify-content:space-between;gap:10px;border-botto m:1px solid var(--line);padding:10px 0;font-size:13px"><span>${names[x.level]} · ${x.date}</span><strong style="color:var(--blue)">${x.score}/100</strong></div>`).join(""); } drawChart(data); } function drawChart(data) { const canvas = document.getElementById("resultChart"), empty = document.getElementById("chartEmpty"), ctx = canvas.getContext("2d"); ctx.clearRect(0, 0, canvas.width, canvas.height); if (!data.length) { empty.style.display = "block"; canvas.style.display = "none "; return; } empty.style.display = "none"; canvas.style.display = "block"; const w = canvas.width = canvas.clientWidth * devicePixelRatio, h = canvas.height = canvas.clientHeight * devicePixelRatio; ctx.scale(devicePixelRatio, devicePixelRatio); const cw = canvas.clientWidth, ch = canvas.clientHeight; const labels = ["Dasar", "Menengah", "HOTS"], keys = ["dasar", "menengah", "hots"]; const values = keys.map(k => { const a = data.filter(d => d.level === k); return a.length ? a.reduce((s, d) => s + d.score, 0) / a.length : 0; }); const left = 38, right = 12, top = 18, bottom = 34, plotH = ch - top - bottom, plotW = cw - left - right; ctx.font = "11px Arial"; ctx.textAlign = "right"; ctx.fillStyle = "#8291a3"; for (let n = 0; n <= 100; n += 20) { const y = top + plotH - (n / 100) * plotH; ctx.fillText(n, left - 8, y + 4); ctx.strokeStyle = "#e9eff5"; ctx.beginPath(); ctx.moveTo(left, y); ctx.lineTo(cw - right, y); ctx.stroke(); } const slot = plotW / 3, barW = Math.min(48, slot * .48); values.forEach((v, i) => { const bh = plotH * v / 100, x = left + slot * i + (slot - barW) / 2, y = top + plotH - bh; ctx.fillStyle = ["#75a9df", "#f1c56a", "#68b78e"][i]; ctx.beginPath(); ctx.roundRect(x, y, barW, bh, 6); ctx.fill(); ctx.fillStyle = "#52677e"; ctx.textAlign = "center"; ctx.fillText(data.some(d => d.level === keys[i]) ? Math.round(v) : "–", x + barW / 2, y7); ctx.fillText(labels[i], x + barW / 2, ch - 10); }); } function clearResults() { if (confirm("Hapus semua riwayat latihan pada perangkat ini?")) { localStorage.removeItem("titikResults"); renderEvaluation(); } } startQuiz("dasar"); </script>
+<div class="top-line"></div>
+<header>
+<div class="container nav">
+<button class="brand" onclick="showPage('home')" aria-label="Kembali ke beranda"><span class="brand-mark">∑</span><span>TITIK</span></button>
+<button class="menu-toggle" id="menuToggle" aria-label="Buka menu">☰</button>
+<nav class="nav-links" id="navLinks">
+<button class="active" data-page="home" onclick="showPage('home')">Beranda</button>
+<button data-page="materi" onclick="showPage('materi')">Materi</button>
+<button data-page="latihan" onclick="showPage('latihan')">Latihan</button>
+<button data-page="evaluasi" onclick="showPage('evaluasi')">Evaluasi</button>
+</nav>
+</div>
+</header>
+
+<main class="container">
+<!-- BERANDA -->
+<section class="page active" id="home">
+<section class="hero">
+<div class="hero-copy">
+<div class="eyebrow">Media Pembelajaran Matematika • Kelas IX SMP</div>
+<h1>Selamat Datang di<br>TITIK.</h1>
+<p>Temukan cara mudah memahami Sistem Persamaan Linear Dua Variabel (SPLDV). Belajar, berlatih, dan temukan jawabannya bersama TITIK.</p>
+<div class="hero-actions">
+<button class="primary" onclick="showPage('materi')">Mulai Belajar <span>➜</span></button>
+<button class="secondary" id="soundButton" onclick="playWelcome()">🔊 Dengarkan Sambutan</button>
+</div>
+</div>
+<div class="hero-art" aria-hidden="true">
+<div class="art-circle"></div>
+<div class="math-card">2x + 3y = 12<small>Temukan nilai x dan y!</small></div>
+<div class="calculator">▦<br><small style="font-size:9px;color:#dcecff">123 ×</small></div>
+</div>
+</section>
+
+<section class="section">
+<div class="section-heading"><div><h2>Akses Pembelajaran</h2><p>Pilih menu yang ingin kamu pelajari.</p></div></div>
+<div class="access-grid">
+<button class="access-card material" onclick="showPage('materi')">
+<div class="access-top"><span class="access-icon">📘</span><span class="round-arrow">›</span></div>
+<div><h3>Materi</h3><p>Pelajari konsep dan metode penyelesaian SPLDV secara bertahap.</p></div>
+</button>
+<button class="access-card practice" onclick="showPage('latihan')">
+<div class="access-top"><span class="access-icon">✏</span><span class="round-arrow">›</span></div>
+<div><h3>Latihan</h3><p>Asah pemahaman melalui soal dari tingkat dasar hingga HOTS.</p></div>
+</button>
+<button class="access-card evaluation" onclick="showPage('evaluasi')">
+<div class="access-top"><span class="access-icon">▣</span><span class="round-arrow">›</span></div>
+<div><h3>Evaluasi</h3><p>Lihat hasil latihan dan kenali materi yang perlu ditingkatkan.</p></div>
+</button>
+</div>
+</section>
+
+<section class="section">
+<div class="section-heading">
+<div><h2>📚 Materi yang Tersedia</h2><p>Materi pilihan untuk memulai perjalanan belajarmu.</p></div>
+<button class="text-link" onclick="showPage('materi')">Lihat Semua →</button>
+</div>
+<div class="popular-grid">
+<article class="popular-card"><span class="number">01</span><div><h3>Pemahaman Konsep SPLDV</h3><p>Temukan sendiri definisi SPLDV lewat aktivitas seru.</p><button onclick="openLesson('konsep')">Pelajari sekarang →</button></div></article>
+<article class="popular-card"><span class="number">02</span><div><h3>Metode Penyelesaian SPLDV</h3><p>Mencoba metode grafik, eliminasi, dan substitusi.</p><button onclick="openLesson('metode')">Pelajari sekarang →</button></div></article>
+<article class="popular-card"><span class="number">03</span><div><h3>Studi Kasus</h3><p>Menyelesaikan masalah lewat cerita yang menarik.</p><button onclick="openLesson('kasus')">Pelajari sekarang →</button></div></article>
+</div>
+</section>
+
+<section class="motivation"><span class="target">🎯</span>
+<div><h3>Sudah siap menguji pemahamanmu?</h3><p>Kerjakan latihan dan evaluasi untuk melihat sejauh mana perkembangan belajarmu.</p></div>
+</section>
+</section>
+
+<!-- MATERI -->
+<section class="page" id="materi">
+<button class="back-btn" onclick="showPage('home')">← Kembali ke Beranda</button>
+<div class="page-intro">
+<div class="eyebrow">Ruang Belajar</div>
+<h1>Materi SPLDV</h1>
+<p>Pilih salah satu bagian. Semuanya bisa kamu coba langsung!</p>
+</div>
+<div class="lesson-list">
+<button class="lesson-item" onclick="openLesson('konsep')"><strong>01. Pemahaman Konsep</strong><span>Bantu Bu Rani di warung buah, lalu temukan sendiri definisi SPLDV.</span></button>
+<button class="lesson-item" onclick="openLesson('metode')"><strong>02. Metode Penyelesaian</strong><span>Grafik, eliminasi, dan substitusi, dicoba satu per satu.</span></button>
+<button class="lesson-item" onclick="openLesson('kasus')"><strong>03. Studi Kasus</strong><span>Cerita seru di pasar malam yang diselesaikan dengan SPLDV.</span></button>
+<button class="lesson-item" onclick="openLesson('video')"><strong>04. Rekomendasi Video</strong><span>Video pembelajaran SPLDV di YouTube.</span></button>
+</div>
+<div id="lessonDetail" style="margin-top:18px"></div>
+</section>
+
+<!-- LATIHAN -->
+<section class="page" id="latihan">
+<button class="back-btn" onclick="showPage('home')">← Kembali ke Beranda</button>
+<div class="page-intro">
+<div class="eyebrow">Uji Pemahaman</div>
+<h1>Latihan SPLDV</h1>
+<p>Pilih tingkat latihan. Setiap sesi berisi 10 soal yang diacak dari bank soal. Hasil latihan tersimpan pada perangkat yang kamu gunakan.</p>
+</div>
+<div class="level-tabs">
+<button class="active" data-level="dasar" onclick="startQuiz('dasar')">Tingkat Dasar</button>
+<button data-level="menengah" onclick="startQuiz('menengah')">Tingkat Menengah</button>
+<button data-level="hots" onclick="startQuiz('hots')">Tingkat HOTS</button>
+</div>
+<div class="content-card" id="quizCard">
+<div class="quiz-top"><span id="levelLabel">Tingkat Dasar</span><span id="questionCount">Soal 1 dari 3</span></div>
+<div class="progress"><span id="progressBar"></span></div>
+<div class="tag">Pilih satu jawaban yang paling tepat</div>
+<div class="question" id="questionText"></div>
+<div class="options" id="options"></div>
+<div class="feedback" id="feedback"></div>
+<div class="quiz-actions"><button class="secondary" onclick="showPage('materi')">Buka Materi</button><button class="primary" id="nextButton" onclick="nextQuestion()" disabled>Periksa Jawaban</button></div>
+</div>
+</section>
+
+<!-- EVALUASI -->
+<section class="page" id="evaluasi">
+<button class="back-btn" onclick="showPage('home')">← Kembali ke Beranda</button>
+<div class="page-intro">
+<div class="eyebrow">Rekap Perkembangan</div>
+<h1>Evaluasi Belajar</h1>
+<p>Ringkasan hasil latihan yang telah kamu kerjakan pada perangkat ini.</p>
+</div>
+<div class="result-grid">
+<div class="stat"><span>Latihan diselesaikan</span><strong id="totalAttempt">0</strong></div>
+<div class="stat"><span>Rata-rata nilai</span><strong id="averageScore">–</strong></div>
+<div class="stat"><span>Nilai tertinggi</span><strong id="bestScore">–</strong></div>
+</div>
+<div class="content-card" style="margin-top:16px">
+<h3>Grafik Hasil Berdasarkan Tingkat</h3>
+<p style="font-size:12px">Grafik memperlihatkan rata-rata nilai pada setiap tingkat latihan. Bagian dengan nilai lebih rendah dapat menjadi prioritas belajar berikutnya.</p>
+<div class="chart-wrap"><canvas id="resultChart" aria-label="Grafik nilai latihan"></canvas></div>
+<div id="chartEmpty" class="empty">Belum ada hasil latihan. Kerjakan latihan terlebih dahulu untuk melihat grafik perkembanganmu.</div>
+</div>
+<div class="content-card">
+<h3>Riwayat Pengerjaan</h3>
+<div id="historyList" class="empty">Belum ada riwayat pengerjaan.</div>
+</div>
+<button class="secondary" onclick="clearResults()">Hapus riwayat pada perangkat ini</button>
+</section>
+</main>
+
+<footer>
+<div class="container footer-inner"><span><strong style="color:var(--navy)">TITIK</strong> · Media Pembelajaran Matematika SPLDV Kelas IX</span><span>Belajar hari ini, temukan jawaban esok hari. © 2026</span></div>
+</footer>
+
+<script>
+const $ = id => document.getElementById(id);
+const welcomeText = "Selamat datang di TITIK, karena dengan mengetahui TITIK maka kamu akan menemukan jawabannya. Selamat belajar dan sampai jumpa pada nilai sempurna kamu.";
+let currentLevel = "dasar", currentQuestion = 0, selectedAnswer = null, answered = false, currentScore = 0;
+
+const levels = {
+  dasar: [
+    { q: "Bentuk umum persamaan linear dua variabel adalah ...", o: ["ax + by = c", "ax² + by = c", "ax + b = 0", "ax³ + by = c"], a: 0, e: "SPLDV terdiri atas dua persamaan linear yang masing-masing memiliki dua variabel." },
+    { q: "Manakah pasangan yang merupakan solusi dari x + y = 7 dan x − y = 1?", o: ["(3, 4)", "(4, 3)", "(5, 2)", "(2, 5)"], a: 1, e: "Pasangan (4, 3) memenuhi kedua persamaan: 4 + 3 = 7 dan 4 − 3 = 1." },
+    { q: "Jika x = 2 dan y = 3, nilai 2x + y adalah ...", o: ["5", "6", "7", "8"], a: 2, e: "Substitusikan x = 2 dan y = 3: 2(2) + 3 = 7." }
+  ],
+  menengah: [
+    { q: "Diketahui x + y = 10 dan x − y = 2. Nilai x adalah ...", o: ["4", "5", "6", "8"], a: 2, e: "Jumlahkan kedua persamaan: 2x = 12, sehingga x = 6." },
+    { q: "Diketahui 2x + y = 11 dan x + y = 7. Nilai y adalah ...", o: ["2", "3", "4", "5"], a: 1, e: "Kurangkan persamaan pertama dengan kedua: x = 4. Maka y = 7 − 4 = 3. Jadi pilihan yang benar adalah 3." },
+    { q: "Harga 2 buku dan 1 pensil adalah Rp11.000. Harga 1 buku dan 1 pensil Rp7.000. Harga satu buku adalah ...", o: ["Rp3.000", "Rp4.000", "Rp5.000", "Rp6.000"], a: 1, e: "Misalkan b = harga buku dan p = harga pensil. 2b+p=11.000 dan b+p=7.000. Selisihnya b=4.000." }
+  ],
+  hots: [
+    { q: "Di kantin, 2 roti dan 3 susu berharga Rp24.000, sedangkan 3 roti dan 2 susu berharga Rp26.000. Berapa harga satu roti?", o: ["Rp4.000", "Rp5.000", "Rp6.000", "Rp7.000"], a: 2, e: "Misalkan r roti dan s susu (ribuan). 2r+3s=24 dan 3r+2s=26. Eliminasi menghasilkan r=6. Jadi harga roti Rp6.000." },
+    { q: "Jumlah dua bilangan adalah 18. Bilangan pertama 4 lebih besar daripada bilangan kedua. Pasangan bilangan tersebut adalah ...", o: ["(10, 8)", "(11, 7)", "(12, 6)", "(13, 5)"], a: 1, e: "Misalkan x+y=18 dan x−y=4. Jumlahkan: 2x=22, x=11, sehingga y=7." },
+    { q: "Sebuah tempat parkir berisi 20 kendaraan berupa mobil dan sepeda motor. Jumlah seluruh rodanya 56. Jika mobil memiliki 4 roda dan motor 2 roda, banyak mobil adalah ...", o: ["6", "7", "8", "9"], a: 2, e: "Misalkan m mobil dan s motor. m+s=20 serta 4m+2s=56. Kurangkan persamaan kedua dengan 2(m+s)=40, diperoleh 2m=16 sehingga m=8." }
+  ]
+};
+
+/* ================= MATERI INTERAKTIF ================= */
+const R = n => Math.floor(Math.random() * n);
+const gcd = (a, b) => b ? gcd(b, a % b) : Math.abs(a);
+const lcm = (a, b) => Math.abs(a * b) / gcd(a, b);
+const fm = n => String(n).replace("-", "−");
+const tm = (c, v, f) => { const a = Math.abs(c); return (f ? (c < 0 ? "−" : "") : (c < 0 ? " − " : " + ")) + (a === 1 ? "" : a) + v; };
+const eq = (a, b, c) => tm(a, "x", 1) + tm(b, "y") + " = " + fm(c);
+const Q = {}, P = {}, WM = {}, DN = {}, KD = {}, DS = { m1: {}, m2: {} };
+let sel = null;
+
+/* ---- mesin tanya-jawab bertahap ---- */
+function qr(g) {
+  const el = $("q_" + g); if (!el) return;
+  const L = Q[g], p = P[g] || 0; let h = "";
+  L.forEach((q, i) => {
+    if (i > p) return;
+    const dn = i < p;
+    h += `<div class="stp${dn ? " done" : ""}"><span class="sn">${dn ? "✓" : i + 1}</span><div class="sb">${q.t ? `<b>${q.t}</b>` : ""}<div>${q.d || ""}</div>`;
+    if (q.q) h += `<p><b>${q.q}</b></p>`;
+    if (dn) { if (q.e) h += `<div class="msg good">${q.e}</div>`; }
+    else {
+      if (q.o) h += q.o.map((t, j) => `<button class="option" style="width:100%;margin-bottom:6px" onclick="qm('${g}',${j})">${t}</button>`).join("");
+      else if (q.l) h += q.l.map((t, j) => `${t} <input class="mini" id="${g}_${j}" type="number" step="any"> `).join("") + `<button class="secondary" onclick="qc('${g}')">Periksa</button>`;
+      else if (q.gc) h += `<div class="msg">👆 Ketuk titik pada grafik.</div>`;
+      else if (!q.fin) h += `<button class="primary" onclick="adv('${g}')">Paham, lanjut →</button>`;
+      if (WM[g]) h += `<div class="msg bad">${WM[g]}</div>`;
+    }
+    h += `</div></div>`;
+  });
+  if (p >= L.length) h += `<div class="msg good">✅ Bagian ini selesai.</div>`;
+  el.innerHTML = h;
+}
+function adv(g) { P[g] = (P[g] || 0) + 1; WM[g] = null; qr(g); if (P[g] >= Q[g].length && DN[g]) DN[g](); }
+function qm(g, j) { const q = Q[g][P[g] || 0]; if (j === q.k) adv(g); else { WM[g] = q.h || "Belum tepat, coba pilihan lain 🤔"; qr(g); } }
+function qc(g) {
+  const q = Q[g][P[g] || 0], v = q.l.map((_, j) => $(g + "_" + j).value);
+  if (v.every((x, j) => x !== "" && Math.abs(+x - q.a[j]) < 1e-6)) adv(g);
+  else { WM[g] = q.h || "Belum tepat, hitung lagi ya."; qr(g); v.forEach((x, j) => $(g + "_" + j).value = x); }
+}
+function gClick0(g, X, Y) {
+  const q = Q[g][P[g] || 0]; if (!q || !q.gc) return;
+  if (X === q.gx && Y === q.gy) adv(g);
+  else { WM[g] = `Belum tepat. Kamu memilih (${X}, ${Y}). Titik potong harus dilalui kedua garis sekaligus.`; qr(g); }
+}
+
+/* ---- grafik ---- */
+function gSvg(s, o) {
+  const S = 26, px = u => 30 + (u + 3) * S, py = v => 330 - (v + 3) * S;
+  const ln = (a, b, c, col) => `<line x1="${px(-3)}" y1="${py((c + 3 * a) / b)}" x2="${px(9)}" y2="${py((c - 9 * a) / b)}" stroke="${col}" stroke-width="3.5" stroke-linecap="round" clip-path="url(#gcl)"/>`;
+  const pt = (X, Y, col) => `<circle cx="${px(X)}" cy="${py(Y)}" r="6" fill="${col}" stroke="#fff" stroke-width="2.5"/><text x="${px(X) + 8}" y="${py(Y) - 8}" font-size="10" font-weight="700" fill="${col}">(${fm(X)}, ${fm(Y)})</text>`;
+  let g = `<svg viewBox="0 0 360 360" style="width:100%;max-width:440px;display:block;margin:10px auto;border-radius:16px;box-shadow:0 8px 22px #3979bd2e"><defs><linearGradient id="gbg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f6fbff"/><stop offset="1" stop-color="#e3f0ff"/></linearGradient><clipPath id="gcl"><rect x="${px(-3)}" y="${py(9)}" width="${12 * S}" height="${12 * S}"/></clipPath></defs><rect width="360" height="360" fill="url(#gbg)"/>`;
+  for (let i = -3; i <= 9; i++) {
+    g += `<path d="M${px(i)} ${py(-3)}V${py(9)}M${px(-3)} ${py(i)}H${px(9)}" stroke="${i === 0 ? "#6c86a3" : "#d3e3f3"}" stroke-width="${i === 0 ? 1.8 : 1}"/>`;
+    if (i) g += `<text x="${px(i)}" y="${py(0) + 12}" font-size="9" text-anchor="middle" fill="#6b7f95">${fm(i)}</text><text x="${px(0) - 5}" y="${py(i) + 3}" font-size="9" text-anchor="end" fill="#6b7f95">${fm(i)}</text>`;
+  }
+  g += `<text x="${px(9) - 2}" y="${py(0) - 6}" font-size="12" font-weight="800" fill="#173b68">x</text><text x="${px(0) + 7}" y="${py(9) + 10}" font-size="12" font-weight="800" fill="#173b68">y</text>`;
+  g += `<rect x="30" y="8" width="215" height="38" rx="9" fill="#fff" fill-opacity=".9"/><text x="38" y="23" font-size="11" font-weight="700" fill="#e8575a">① ${eq(s.a1, s.b1, s.c1)}</text><text x="38" y="39" font-size="11" font-weight="700" fill="#3979bd">② ${eq(s.a2, s.b2, s.c2)}</text>`;
+  if (o.l1) g += ln(s.a1, s.b1, s.c1, "#e8575a");
+  if (o.l2) g += ln(s.a2, s.b2, s.c2, "#3979bd");
+  if (o.p1) g += pt(s.x - s.b1, s.y + s.a1, "#e8575a") + pt(s.x + s.b1, s.y - s.a1, "#e8575a");
+  if (o.p2) g += pt(s.x - s.b2, s.y + s.a2, "#3979bd") + pt(s.x + s.b2, s.y - s.a2, "#3979bd");
+  if (o.f) g += `<circle cx="${px(s.x)}" cy="${py(s.y)}" r="8" fill="#ffc85a" opacity=".6"><animate attributeName="r" values="8;18;8" dur="1.5s" repeatCount="indefinite"/><animate attributeName="opacity" values=".7;.1;.7" dur="1.5s" repeatCount="indefinite"/></circle><circle cx="${px(s.x)}" cy="${py(s.y)}" r="6" fill="#2d9b68" stroke="#fff" stroke-width="2.5"/><rect x="${px(s.x) + 9}" y="${py(s.y) - 26}" width="62" height="18" rx="9" fill="#173b68"/><text x="${px(s.x) + 40}" y="${py(s.y) - 13}" font-size="10" font-weight="800" fill="#fff" text-anchor="middle">(${s.x}, ${s.y})</text>`;
+  if (o.cl) for (let X = -3; X <= 9; X++) for (let Y = -3; Y <= 9; Y++) g += `<circle class="gh" cx="${px(X)}" cy="${py(Y)}" r="11" onclick="gClick('${o.cl}',${X},${Y})"><title>(${X}, ${Y})</title></circle>`;
+  return g + `</svg>`;
+}
+
+/* ---- kegiatan seret kartu ---- */
+const chp = t => `<span class="chip" draggable="true" data-t="${t}" ondragstart="sel=this.dataset.t" onclick="sel=this.dataset.t;document.querySelectorAll('.chip').forEach(c=>c.classList.toggle('sel',c===this))">${t}</span>`;
+const DM = {
+  m1: { f: "a2", p: "Perhatikan persamaan <b>3x + 2y = 12</b>. Seret kartu istilah ke kotak yang sesuai (atau ketuk kartu, lalu ketuk kotaknya).", it: [["Huruf x", "variabel"], ["Angka 3 di depan x", "koefisien"], ["Huruf y", "variabel"], ["Angka 2 di depan y", "koefisien"], ["Angka 12 di ruas kanan", "konstanta"]], ch: ["variabel", "variabel", "koefisien", "koefisien", "konstanta", "pangkat"], e: "Tepat! Variabel = lambang nilai yang belum diketahui, koefisien = angka di depan variabel, konstanta = angka yang berdiri sendiri." },
+  m2: { f: "a6", p: "Misalkan <b>x</b> = harga 1 apel dan <b>y</b> = harga 1 pisang (ribu rupiah). Pasangkan kartu dengan tempatnya.", it: [["🍎 = harga 1 apel →", "x"], ["🍌 = harga 1 pisang →", "y"], ["Nota Dito (2 apel + 1 pisang = 8.000) →", "2x + y = 8"], ["Nota Sari (1 apel + 2 pisang = 7.000) →", "x + 2y = 7"]], ch: ["x", "y", "2x + y = 8", "x + 2y = 7", "2x + 2y = 8", "x + y = 7"], e: "Mantap! Dua nota berubah menjadi dua persamaan dengan dua variabel yang sama: x dan y." }
+};
+function rdm(id) {
+  const el = $("dm_" + id); if (!el) return;
+  const d = DM[id], s = DS[id], rest = [...d.ch]; Object.values(s).forEach(v => rest.splice(rest.indexOf(v), 1));
+  const done = Object.keys(s).length === d.it.length;
+  el.innerHTML = `<p>${d.p}</p><div>${rest.map(chp).join("")}</div>` + d.it.map((t, i) => `<div style="margin:5px 0">${t[0]} <span class="slot ${s[i] ? "ok" : ""}" ondragover="event.preventDefault()" ondrop="dzs('${id}',${i},event)" onclick="dzs('${id}',${i})">${s[i] || "· · ·"}</span></div>`).join("") + `<div id="dmm_${id}"></div>` + (done ? `<div class="msg good">${d.e}</div>` : "");
+  if (done) fin(d.f);
+}
+function dzs(id, i, e) {
+  if (e) e.preventDefault();
+  const m = $("dmm_" + id);
+  if (sel == null) { m.className = "msg"; m.textContent = "Pilih kartu dulu, lalu ketuk kotaknya."; return; }
+  if (DS[id][i]) return;
+  if (sel === DM[id].it[i][1]) { DS[id][i] = sel; sel = null; rdm(id); }
+  else { m.className = "msg bad"; m.textContent = "Belum tepat, coba kartu lain 🤔"; }
+}
+function fin(k) {
+  if (k) KD[k] = 1;
+  const b = $("kprog"); if (!b) return;
+  const n = Object.keys(KD).length; b.style.width = n / 8 * 100 + "%"; $("kcount").textContent = n;
+}
+
+/* ---- kegiatan stepper (warung buah & uji penyelesaian) ---- */
+const KX = { a: 1, b: 1, pairs: [] }, KC = { x: 0, y: 0 };
+const stp = (k, f, v) => `<span class="stepper"><button onclick="${f}('${k}',-1)">−</button><b>${v}</b><button onclick="${f}('${k}',1)">+</button></span>`;
+function kst(k, d) {
+  KX[k] = Math.min(8, Math.max(1, KX[k] + d));
+  if (2 * KX.a + KX.b === 8) { const p = `(${KX.a}.000 ; ${KX.b}.000)`; if (!KX.pairs.includes(p)) KX.pairs.push(p); }
+  rX();
+}
+function rX() {
+  const t1 = 2 * KX.a + KX.b, t2 = KX.a + 2 * KX.b, o1 = t1 === 8, o2 = t2 === 7;
+  const ctl = `<p>🍎 Apel: ${stp("a", "kst", "Rp" + KX.a + ".000")} &nbsp; 🍌 Pisang: ${stp("b", "kst", "Rp" + KX.b + ".000")}</p>`;
+  const n1 = `<div class="nota"><b>🧾 Nota Dito</b><br>🍎🍎 + 🍌 = Rp8.000<br>Hitunganmu: Rp${t1}.000 ${o1 ? "✅" : "❌"}</div>`;
+  const n2 = `<div class="nota"><b>🧾 Nota Sari</b><br>🍎 + 🍌🍌 = Rp7.000<br>Hitunganmu: Rp${t2}.000 ${o2 ? "✅" : "❌"}</div>`;
+  if ($("kx4")) $("kx4").innerHTML = ctl + `<div class="row">${n1}</div><div class="msg">Pasangan harga yang cocok untuk Nota Dito dan sudah kamu temukan: <b>${KX.pairs.length ? KX.pairs.join(" · ") : "belum ada"}</b>. Temukan minimal 2 pasangan berbeda!</div>`;
+  if ($("kx5")) $("kx5").innerHTML = ctl + `<div class="row">${n1}${n2}</div>` + (o1 && o2 ? `<div class="msg good">Hebat! Hanya satu pasangan yang cocok untuk kedua nota sekaligus: apel Rp3.000 dan pisang Rp2.000.</div>` : `<div class="msg">Cari pasangan harga yang membuat ❌ pada kedua nota berubah menjadi ✅.</div>`);
+  if (KX.pairs.length >= 2) fin("a4");
+  if (o1 && o2) fin("a5");
+}
+function kcs(k, d) { KC[k] = Math.min(9, Math.max(0, KC[k] + d)); rC(); }
+function rC() {
+  const el = $("kc7"); if (!el) return;
+  const s1 = KC.x + KC.y, s2 = KC.x - KC.y, o1 = s1 === 7, o2 = s2 === 1;
+  el.innerHTML = `<p>Sistem: <b>x + y = 7</b> dan <b>x − y = 1</b>. Pilih nilai x dan y, lalu lihat apakah keduanya terpenuhi.</p><p>x = ${stp("x", "kcs", KC.x)} &nbsp; y = ${stp("y", "kcs", KC.y)}</p>
+  <div class="row"><div class="nota">x + y = ${KC.x} + ${KC.y} = <b>${s1}</b> ${o1 ? "✅" : "❌"} (harus 7)</div><div class="nota">x − y = ${KC.x} − ${KC.y} = <b>${s2}</b> ${o2 ? "✅" : "❌"} (harus 1)</div></div>` + (o1 && o2 ? `<div class="msg good">Pasangan (4, 3) memenuhi keduanya. Pasangan inilah yang disebut penyelesaian SPLDV.</div>` : "");
+  if (o1 && o2) fin("a7");
+}
+
+/* ---- 01 PEMAHAMAN KONSEP ---- */
+Q.k1 = [
+  { q: "Bu Kantin menjual gorengan dengan harga sama. Membeli 3 gorengan, Dinda membayar Rp6.000. Berapa rupiah harga 1 gorengan?", l: ["Rp"], a: [2000], h: "Bagi 6.000 dengan 3.", e: "Harga 1 gorengan Rp2.000. Karena harga itu belum diketahui di awal, kita lambangkan dengan huruf, misalnya x, sehingga 3x = 6.000." },
+  { q: "Huruf x yang mewakili harga gorengan pada 3x = 6.000 disebut ...", o: ["variabel", "koefisien", "konstanta"], k: 0, e: "Benar. Huruf yang mewakili nilai yang belum diketahui disebut variabel." },
+  { q: "Angka 3 pada bentuk 3x disebut ...", o: ["variabel", "koefisien", "konstanta"], k: 1, e: "Koefisien adalah angka yang mengalikan variabel, sedangkan 6.000 disebut konstanta." }
+];
+Q.k3 = [
+  { q: "Apakah 2x + y = 5 termasuk persamaan linear dua variabel?", o: ["Ya, linear", "Bukan linear"], k: 0, e: "Ya. Ada dua variabel (x dan y) dan keduanya berpangkat satu." },
+  { q: "Apakah x² + y = 4 termasuk persamaan linear dua variabel?", o: ["Ya, linear", "Bukan linear"], k: 1, e: "Bukan. Variabel x berpangkat dua, sedangkan persamaan linear hanya memuat variabel berpangkat satu." },
+  { q: "Apakah xy = 6 termasuk persamaan linear dua variabel?", o: ["Ya, linear", "Bukan linear"], k: 1, e: "Bukan. Dua variabel yang saling dikalikan menghasilkan suku berderajat dua." },
+  { q: "Apakah 3x − 2y = 0 termasuk persamaan linear dua variabel?", o: ["Ya, linear", "Bukan linear"], k: 0, e: "Ya. Konstanta di ruas kanan boleh bernilai 0; syaratnya hanya variabelnya berpangkat satu." }
+];
+Q.k4 = [{ q: "Setelah mencoba, ada berapa pasangan harga yang cocok untuk satu nota saja?", o: ["Hanya satu", "Tepat dua", "Banyak sekali"], k: 2, h: "Coba lagi: kamu sendiri sudah menemukan lebih dari satu pasangan.", e: "Satu persamaan dengan dua variabel memiliki banyak pasangan penyelesaian. Satu nota saja belum cukup untuk menentukan harga pasti." }];
+Q.k5 = [{ q: "Apa yang membuat harga apel dan pisang menjadi tepat satu pasangan?", o: ["Dua nota (dua persamaan) harus dipenuhi bersamaan", "Harga buah selalu bulat", "Nota Sari lebih murah"], k: 0, e: "Tepat. Pasangan yang benar adalah pasangan yang memenuhi persamaan pertama dan kedua sekaligus." }];
+Q.k7 = [{ q: "Apakah (5, 2) penyelesaian dari x + y = 7 dan x − y = 1?", o: ["Ya", "Tidak, hanya memenuhi persamaan pertama", "Tidak, tidak memenuhi keduanya"], k: 1, e: "Benar. 5 + 2 = 7 terpenuhi, tetapi 5 − 2 = 3 (bukan 1). Penyelesaian harus memenuhi kedua persamaan." }];
+Q.k9 = [
+  { q: "Manakah yang merupakan SPLDV?", o: ["2x + y = 5 dan x − y = 1", "x² + y = 4 dan x + y = 3", "x + y + z = 6 dan x − y = 1"], k: 0, e: "Pilihan pertama: dua persamaan linear dengan dua variabel. Pilihan kedua memuat x², pilihan ketiga memuat tiga variabel." },
+  { q: "Jumlah dua bilangan 10 dan selisihnya 4. Berapa bilangan yang lebih besar?", l: ["x ="], a: [7], h: "Coba pasangan: ambil dua bilangan yang jumlahnya 10, lalu cek selisihnya.", e: "Modelnya x + y = 10 dan x − y = 4, penyelesaiannya (7, 3): 7 + 3 = 10 dan 7 − 3 = 4." },
+  { q: "Mengapa SPLDV membutuhkan dua persamaan?", o: ["Agar ada tepat satu pasangan (x, y) yang memenuhi keduanya", "Agar soalnya lebih panjang", "Karena variabelnya memakai dua huruf"], k: 0, e: "Tepat, sama seperti nota Dito dan nota Sari tadi." }
+];
+DN.k1 = () => fin("a1"); DN.k3 = () => fin("a3"); DN.k9 = () => fin("a8");
+const sc = (n, t, i, b) => `<div class="sec"><h3><i>${n}</i>${t}</h3><p>${i}</p>${b}</div>`;
+function rKonsep() {
+  $("mBody").innerHTML = `<div class="kprogw"><div>Aktivitas selesai: <b id="kcount">0</b> dari 8</div><div class="kbar"><span id="kprog"></span></div></div>
+  <p>Di bagian ini kamu tidak langsung diberi rumus. Kerjakan kegiatan dari atas sampai bawah, lalu kamu akan menemukan sendiri apa yang dimaksud dengan <b>Sistem Persamaan Linear Dua Variabel</b>. Semua kegiatan boleh diulang.</p>` +
+    sc(1, "Kenalan dengan variabel", "Cerita kita dimulai di kantin sekolah. Ada harga yang belum diketahui, dan matematika punya cara rapi untuk menuliskannya.", `<div id="q_k1"></div>`) +
+    sc(2, "Bagian-bagian persamaan", "Sebelum melangkah lebih jauh, kenali dulu nama setiap bagian dalam sebuah persamaan.", `<div id="dm_m1"></div>`) +
+    sc(3, "Linear atau bukan?", "Tidak semua persamaan disebut linear. Putuskan satu per satu, ya!", `<div id="q_k3"></div>`) +
+    sc(4, "Satu nota, banyak kemungkinan", "Kita pindah ke Warung Buah Bu Rani. Harga satu apel dan satu pisang dirahasiakan. Dito membeli 2 apel dan 1 pisang dengan total Rp8.000. Atur harga di bawah dan temukan pasangan harga yang cocok dengan nota Dito.", `<div id="kx4"></div><div id="q_k4"></div>`) +
+    sc(5, "Dua nota sekaligus", "Sari juga berbelanja di warung yang sama: 1 apel dan 2 pisang dengan total Rp7.000. Sekarang kedua nota harus cocok bersamaan. Apa yang terjadi pada banyaknya pasangan harga?", `<div id="kx5"></div><div id="q_k5"></div>`) +
+    sc(6, "Dari nota ke persamaan", "Para ahli matematika suka menuliskan cerita belanja menjadi persamaan agar mudah dihitung.", `<div id="dm_m2"></div>`) +
+    sc(7, "Menguji penyelesaian", "Bagaimana memastikan sebuah pasangan nilai benar-benar jawaban? Ujilah pada kedua persamaan.", `<div id="kc7"></div><div id="q_k7"></div>`) +
+    sc(8, "Rangkuman: apa itu SPLDV?", "Dari semua kegiatan tadi, inilah kesimpulannya.", `<div class="defbox"><p style="margin-top:0"><b>Sistem Persamaan Linear Dua Variabel (SPLDV)</b> adalah dua persamaan linear dengan dua variabel yang harus dipenuhi secara bersamaan.</p><div class="formula">a₁x + b₁y = c₁<br>a₂x + b₂y = c₂</div><p><span class="tag">x, y = variabel</span><span class="tag">a₁, b₁, a₂, b₂ = koefisien</span><span class="tag">c₁, c₂ = konstanta</span></p><p><b>Penyelesaian</b> SPLDV adalah pasangan nilai (x, y) yang memenuhi kedua persamaan sekaligus. Pada warung buah penyelesaiannya apel Rp3.000 dan pisang Rp2.000; pada pengujian tadi penyelesaiannya (4, 3).</p></div>`) +
+    sc(9, "Uji pemahamanmu", "Terakhir, buktikan bahwa kamu sudah paham konsepnya.", `<div id="q_k9"></div>`) +
+    `<button class="primary" onclick="openLesson('metode')">Lanjut ke Metode Penyelesaian →</button>`;
+  ["k1", "k3", "k4", "k5", "k7", "k9"].forEach(qr); rdm("m1"); rdm("m2"); rX(); rC(); fin();
+}
+
+/* ---- 02 METODE ---- */
+let MS = null, MM = 0;
+function mkSys() {
+  let s;
+  do {
+    const x = 1 + R(5), y = 1 + R(5), b1 = (R(2) ? 1 : -1) * (1 + R(3)), a2 = 1 + R(3), b2 = (R(2) ? 1 : -1) * (1 + R(3));
+    s = { x, y, a1: 1, b1, c1: x + b1 * y, a2, b2, c2: a2 * x + b2 * y };
+  } while (s.b2 - s.a2 * s.b1 === 0);
+  return s;
+}
+const verStep = s => ({ t: "Periksa jawabanmu", d: `Selalu cek hasilnya: masukkan (x, y) = (${s.x}, ${s.y}) ke persamaan ② <b>${eq(s.a2, s.b2, s.c2)}</b>.`, q: `Berapa hasil ${s.a2}(${s.x}) + (${s.b2})(${s.y}) ?`, l: ["="], a: [s.c2], h: `Hitung ${s.a2 * s.x} + (${s.b2 * s.y}).`, e: `${s.a2}(${s.x}) + (${s.b2})(${s.y}) = ${s.c2}, sama dengan ruas kanan. Jadi (${s.x}, ${s.y}) memenuhi ① dan ②.` });
+const endStep = (s, ex) => ({ t: "Kesimpulan", fin: 1, d: `Himpunan penyelesaian: <b>{(${s.x}, ${s.y})}</b>, yaitu x = ${s.x} dan y = ${s.y}.${ex || ""}<br><br><button class="secondary" onclick="newM()">🎲 Coba soal baru</button>` });
+function gSteps(s) {
+  const e1 = eq(s.a1, s.b1, s.c1), e2 = eq(s.a2, s.b2, s.c2), X1 = s.x - s.b1, X2 = s.x - s.b2;
+  return [
+    { t: "Ide dasar", d: `Persamaan linear dua variabel jika digambar pada bidang koordinat berbentuk <b>garis lurus</b>. SPLDV berarti dua garis lurus, dan penyelesaiannya adalah <b>titik potong</b> kedua garis, yaitu titik yang dilalui kedua garis sekaligus.` },
+    { t: "Dua titik pada garis ①", d: `Garis ①: <b>${e1}</b>. Menggambar garis lurus cukup dengan dua titik. Pilih nilai x, lalu hitung y.`, q: `Untuk x = ${fm(X1)}, berapa nilai y?`, l: ["y ="], a: [s.y + s.a1], h: `Substitusikan x = ${fm(X1)} ke ${e1}, lalu cari y.`, e: `Titik A (${fm(X1)}, ${s.y + s.a1}). Dengan cara sama, untuk x = ${fm(s.x + s.b1)} diperoleh y = ${s.y - s.a1}, yaitu titik B (${fm(s.x + s.b1)}, ${s.y - s.a1}).` },
+    { t: "Dua titik pada garis ②", d: `Garis ②: <b>${e2}</b>. Lakukan hal yang sama.`, q: `Untuk x = ${fm(X2)}, berapa nilai y?`, l: ["y ="], a: [s.y + s.a2], h: `Substitusikan x = ${fm(X2)} ke ${e2}, lalu cari y.`, e: `Titik C (${fm(X2)}, ${s.y + s.a2}). Untuk x = ${fm(s.x + s.b2)} diperoleh y = ${s.y - s.a2}, yaitu titik D (${fm(s.x + s.b2)}, ${s.y - s.a2}).` },
+    { t: "Gambar kedua garis", d: `Titik A dan B dihubungkan menjadi garis ① (merah), titik C dan D menjadi garis ② (biru).` + gSvg(s, { l1: 1, l2: 1, p1: 1, p2: 1 }) },
+    { t: "Temukan titik potong", d: `Amati grafik, lalu ketuk titik tempat kedua garis berpotongan.` + gSvg(s, { l1: 1, l2: 1, p1: 1, p2: 1, cl: "mg" }), gc: 1, gx: s.x, gy: s.y, e: `Kedua garis berpotong di (${s.x}, ${s.y}).` + gSvg(s, { l1: 1, l2: 1, f: 1 }) },
+    verStep(s), endStep(s)
+  ];
+}
+function eSteps(s) {
+  const e1 = eq(s.a1, s.b1, s.c1), e2 = eq(s.a2, s.b2, s.c2), L = lcm(Math.abs(s.b1), Math.abs(s.b2)), m1 = L / Math.abs(s.b1), m2 = L / Math.abs(s.b2);
+  const A1 = s.a1 * m1, B1 = s.b1 * m1, C1 = s.c1 * m1, A2 = s.a2 * m2, B2 = s.b2 * m2, C2 = s.c2 * m2, same = B1 === B2, A = same ? A1 - A2 : A1 + A2, C = same ? C1 - C2 : C1 + C2;
+  return [
+    { t: "Ide dasar", d: `Eliminasi artinya <b>menghilangkan</b> satu variabel agar tersisa persamaan satu variabel. Syaratnya, koefisien variabel yang dihilangkan harus <b>sama besar</b>. Jika belum sama, kalikan persamaan dengan bilangan yang sesuai (gunakan KPK).` },
+    { t: "Samakan koefisien y", d: `① <b>${e1}</b><br>② <b>${e2}</b><br>Kita hilangkan <b>y</b>. Koefisien y adalah ${fm(s.b1)} dan ${fm(s.b2)}. KPK dari ${Math.abs(s.b1)} dan ${Math.abs(s.b2)} adalah ${L}.`, q: `Persamaan ① dikali berapa dan ② dikali berapa agar koefisien y sama besar?`, l: ["① ×", "② ×"], a: [m1, m2], h: `Pengali = KPK ÷ |koefisien y|: ${L} ÷ ${Math.abs(s.b1)} dan ${L} ÷ ${Math.abs(s.b2)}.`, e: `① × ${m1}: ${eq(A1, B1, C1)}<br>② × ${m2}: ${eq(A2, B2, C2)}` },
+    { t: "Jumlahkan atau kurangkan?", d: `① ${eq(A1, B1, C1)}<br>② ${eq(A2, B2, C2)}`, q: `Agar suku y hilang, kedua persamaan harus ...`, o: ["dijumlahkan", "dikurangkan"], k: same ? 1 : 0, h: `Lihat tanda suku y: ${fm(B1)}y dan ${fm(B2)}y. Jika sama, dikurangkan; jika berlawanan, dijumlahkan.`, e: `Suku y adalah ${fm(B1)}y dan ${fm(B2)}y, ${same ? "bertanda sama, sehingga dikurangkan (① − ②)" : "berlawanan tanda, sehingga dijumlahkan (① + ②)"}.` },
+    { t: "Cari x", d: `Hasil ${same ? "pengurangan ① − ②" : "penjumlahan ① + ②"} adalah <b>${fm(A)}x = ${fm(C)}</b>.`, q: `Berapa nilai x?`, l: ["x ="], a: [s.x], h: `Bagi ${fm(C)} dengan ${fm(A)}.`, e: `x = ${fm(C)} ÷ ${fm(A)} = ${s.x}.` },
+    { t: "Cari y", d: `Masukkan x = ${s.x} ke persamaan ①: <b>${s.a1}(${s.x}) + (${s.b1})y = ${s.c1}</b>.`, q: `Berapa nilai y?`, l: ["y ="], a: [s.y], h: `${s.a1 * s.x} + (${s.b1})y = ${s.c1}. Pindahkan ${s.a1 * s.x} ke ruas kanan, lalu bagi.`, e: `${fm(s.b1)}y = ${fm(s.c1 - s.a1 * s.x)}, sehingga y = ${s.y}.` },
+    verStep(s), endStep(s, `<p>Catatan: langkah mencari y tadi memakai substitusi. Menggabungkan eliminasi dan substitusi disebut <b>metode campuran</b> yang akan kamu temui di Studi Kasus.</p>`)
+  ];
+}
+function sSteps(s) {
+  const e1 = eq(s.a1, s.b1, s.c1), e2 = eq(s.a2, s.b2, s.c2), K1 = s.b2 - s.a2 * s.b1, K2 = s.c2 - s.a2 * s.c1;
+  return [
+    { t: "Ide dasar", d: `Substitusi artinya <b>mengganti</b>. Nyatakan satu variabel dalam variabel lain dari salah satu persamaan, lalu gantikan ke persamaan yang satunya sehingga tersisa satu variabel.` },
+    { t: "Nyatakan x dalam y", d: `① <b>${e1}</b><br>② <b>${e2}</b><br>Koefisien x pada ① adalah 1, jadi paling mudah menyatakan x dari ①: pindahkan suku y ke ruas kanan.`, q: `x = ${s.c1} − ( ? ) y. Berapa nilai ? tersebut`, l: ["?"], a: [s.b1], h: `Dari x + (${s.b1})y = ${s.c1}, pindahkan (${s.b1})y ke kanan sehingga menjadi −(${s.b1})y.`, e: `x = ${s.c1} − (${s.b1})y${s.b1 < 0 ? `, atau x = ${s.c1} + ${-s.b1}y` : ""}.` },
+    { t: "Substitusikan ke ②", d: `Ganti x pada ② dengan (${s.c1} − (${s.b1})y):<br><b>${s.a2}(${s.c1} − (${s.b1})y) + (${s.b2})y = ${s.c2}</b>`, q: `Sederhanakan menjadi (koefisien) y = (ruas kanan). Isi keduanya.`, l: ["koefisien y =", "ruas kanan ="], a: [K1, K2], h: `Kalikan ${s.a2} ke dalam kurung: ${s.a2 * s.c1} − (${s.a2 * s.b1})y + (${s.b2})y = ${s.c2}. Gabungkan suku y, lalu pindahkan ${s.a2 * s.c1} ke ruas kanan.`, e: `${fm(K1)}y = ${fm(K2)}.` },
+    { t: "Cari y", d: `Persamaan satu variabel: <b>${fm(K1)}y = ${fm(K2)}</b>.`, q: `Berapa nilai y?`, l: ["y ="], a: [s.y], h: `Bagi ${fm(K2)} dengan ${fm(K1)}.`, e: `y = ${s.y}.` },
+    { t: "Cari x", d: `Masukkan y = ${s.y} ke bentuk <b>x = ${s.c1} − (${s.b1})y</b>.`, q: `Berapa nilai x?`, l: ["x ="], a: [s.x], h: `x = ${s.c1} − (${s.b1})(${s.y}).`, e: `x = ${s.c1} − (${s.b1 * s.y}) = ${s.x}.` },
+    verStep(s), endStep(s)
+  ];
+}
+function selM(m) { MM = m; if (m) { Q.mg = [0, gSteps, eSteps, sSteps][m](MS); P.mg = 0; WM.mg = null; } rMetode(); }
+function newM() { MS = mkSys(); selM(MM); }
+function rMetode() {
+  const nm = ["📈 Metode 1 · Grafik", "✂️ Metode 2 · Eliminasi", "🔁 Metode 3 · Substitusi"];
+  const FL = [["Cari 2 titik tiap garis", "Gambar kedua garis", "Cari titik potong", "Periksa"], ["Samakan koefisien", "Jumlah / kurang", "Cari variabel pertama", "Cari variabel kedua", "Periksa"], ["Nyatakan satu variabel", "Substitusi ke persamaan lain", "Selesaikan", "Cari variabel lain", "Periksa"]];
+  $("mBody").innerHTML = `<p>Soal di bawah <b>berbeda setiap kali materi ini dibuka</b>, jadi kamu bisa berlatih dengan angka baru. Ketiga metode memakai sistem yang sama supaya kamu bisa membandingkannya.</p>
+  <div class="formula">① ${eq(MS.a1, MS.b1, MS.c1)}<br>② ${eq(MS.a2, MS.b2, MS.c2)}</div>
+  <div class="row">${nm.map((t, i) => `<button class="${MM === i + 1 ? "primary" : "secondary"}" onclick="selM(${i + 1})">${t}</button>`).join("")}<button class="secondary" onclick="newM()">🎲 Soal baru</button></div>` +
+    (MM ? `<div class="flow"><b>Alur:</b>${FL[MM - 1].map((t, i) => `${i ? "<b>→</b>" : ""}<span>${t}</span>`).join("")}</div><div id="q_mg"></div>` : `<div class="empty" style="margin-top:14px">Pilih salah satu metode di atas untuk mulai belajar langkah demi langkah.</div>`);
+  if (MM) qr("mg");
+}
+
+/* ---- 03 STUDI KASUS ---- */
+const C1 = { x: 5, y: 3, a1: 1, b1: 1, c1: 8, a2: 1, b2: -1, c2: 2 };
+const MC = (q, o, k, e) => ({ t: "Susun model", q, o, k, e });
+const CS = [
+  { t: "Kasus 1 · Jejak Harta Karun Pulau Kelapa", m: "Metode Grafik", s: `<p>Kapten Rani menemukan botol kaca di tepi Pantai Kelapa. Di dalamnya ada peta lusuh yang bergambar pohon kelapa tertua di pulau itu, dan dua kalimat petunjuk yang ditulis dengan tinta pudar.</p><p><i>“Petunjuk pertama: jumlah langkah ke timur dan langkah ke utara dari pohon kelapa adalah 8. Petunjuk kedua: langkah ke timur lebih banyak 2 daripada langkah ke utara.”</i></p><p>Kapten tahu harta hanya terkubur di tempat yang cocok dengan <b>kedua</b> petunjuk sekaligus. Ia pun menggambar bidang koordinat dengan pohon kelapa sebagai titik (0, 0).</p>`,
+    q: [MC("Misalkan x = langkah ke timur dan y = langkah ke utara. Model matematika yang tepat adalah ...", ["x + y = 8 dan x − y = 2", "x + y = 2 dan x − y = 8", "x − y = 8 dan x + y = 2"], 0, "Jumlah langkah 8 menjadi x + y = 8, dan selisih 2 menjadi x − y = 2."),
+      { t: "Gambar dan temukan", d: gSvg(C1, { l1: 1, l2: 1, cl: "c0" }), gc: 1, gx: 5, gy: 3, e: "Kedua garis berpotongan di (5, 3): harta ada 5 langkah ke timur dan 3 langkah ke utara. Cek: 5 + 3 = 8 dan 5 − 3 = 2." },
+      { t: "Hitung jarak", q: "Satu langkah Kapten Rani sepanjang 60 cm. Berapa cm jarak harta ke arah utara dari pohon kelapa?", l: ["cm"], a: [180], h: "Jarak ke utara = y × 60 cm.", e: "y = 3 langkah, sehingga 3 × 60 = 180 cm."}] },
+  { t: "Kasus 2 · Pesta Kejutan di Rumah Nenek", m: "Metode Eliminasi", s: `<p>Hari Minggu, Nenek mengadakan pesta kejutan ulang tahun untuk Dinda. Nenek berbelanja di Warung Bu Siti: 3 bungkus keripik dan 2 botol sirup, lalu membayar Rp31.000. Ternyata kurang! Dinda berlari ke warung yang sama dan membeli 3 bungkus keripik dan 5 botol sirup seharga Rp55.000.</p><p>Sambil menata gelas, Dinda penasaran, “Berapa sih harga satu bungkus keripik dan satu botol sirup?” Misalkan x = harga satu keripik dan y = harga satu sirup (dalam ribu rupiah). Karena jumlah keripiknya sama, mudah sekali menghilangkan salah satu variabel.</p>`,
+    q: [MC("Model matematika yang tepat adalah ...", ["3x + 2y = 31 dan 3x + 5y = 55", "2x + 3y = 31 dan 5x + 3y = 55", "3x + 2y = 55 dan 3x + 5y = 31"], 0, "Nenek: 3 keripik + 2 sirup = 31, Dinda: 3 keripik + 5 sirup = 55."),
+      { t: "Hilangkan x", q: "Koefisien x pada kedua persamaan sudah sama (3). Agar x hilang, persamaan ② dan ① harus ...", o: ["dijumlahkan", "dikurangkan"], k: 1, e: "② − ①: (3x − 3x) + (5y − 2y) = 55 − 31, diperoleh 3y = 24." },
+      { t: "Harga sirup", q: "Dari 3y = 24, berapa ribu rupiah harga satu botol sirup?", l: ["y ="], a: [8], e: "y = 24 ÷ 3 = 8, jadi sirup Rp8.000." },
+      { t: "Harga keripik", q: "Eliminasi y dengan ① × 5 dan ② × 2, lalu kurangkan: 15x + 10y = 155 dikurangi 6x + 10y = 110 menghasilkan 9x = 45. Berapa ribu rupiah harga satu keripik?", l: ["x ="], a: [5], e: "x = 45 ÷ 9 = 5, jadi keripik Rp5.000."},
+      { t: "Hitung belanja", q: "Berapa ribu rupiah harga 2 keripik dan 4 sirup?", l: ["Rp"], a: [42], h: "2 × 5 + 4 × 8.", e: "2(5) + 4(8) = 10 + 32 = 42, yaitu Rp42.000." }] },
+  { t: "Kasus 3 · Kandang Pak Joko", m: "Metode Substitusi", s: `<p>Di Desa Sumber Rejo, Pak Joko memelihara ayam dan kambing di satu kandang besar. Setiap pagi ia menghitung hewannya, tetapi kali ini ia hanya sempat menghitung jumlah seluruhnya: 20 ekor. Malamnya, putrinya, Sekar, menghitung kaki hewan-hewan itu dan mendapat 56 kaki.</p><p>“Ayah, kita bisa tahu banyak ayam dan kambingnya tanpa menghitung satu per satu!” kata Sekar. Misalkan a = banyak ayam (2 kaki) dan k = banyak kambing (4 kaki).</p>`,
+    q: [MC("Model matematika yang tepat adalah ...", ["a + k = 20 dan 2a + 4k = 56", "a + k = 56 dan 2a + 4k = 20", "2a + k = 20 dan a + 4k = 56"], 0, "Jumlah hewan a + k = 20, jumlah kaki 2a + 4k = 56."),
+      { t: "Substitusikan", d: "Dari a + k = 20 diperoleh <b>a = 20 − k</b>. Gantikan a pada persamaan kedua.", q: "2(20 − k) + 4k = 56 menjadi 40 + 2k = 56. Berapa nilai k (banyak kambing)?", l: ["k ="], a: [8], h: "2k = 56 − 40.", e: "2k = 16, jadi k = 8 kambing." },
+      { t: "Cari ayam", q: "Dengan a = 20 − k, berapa banyak ayam?", l: ["a ="], a: [12], e: "a = 20 − 8 = 12 ayam." },
+      { t: "Hitung kaki", q: "Berapa jumlah kaki seluruh kambing?", l: ["kaki"], a: [32], e: "8 kambing × 4 kaki = 32 kaki. Cek total: 12 × 2 + 8 × 4 = 56 ✓." }] },
+  { t: "Kasus 4 · Promo Akhir Pekan Toko Mawar", m: "Metode Campuran", s: `<p>Mawar, siswi kelas IX yang gemar berwirausaha, membuka toko online kecil yang menjual kaos dan topi bertema kota Malang. Pesanan pertama datang dari Raka: 2 kaos dan 3 topi seharga Rp190.000. Pesanan kedua dari Sinta: 3 kaos dan 2 topi seharga Rp210.000.</p><p>Saat menyiapkan promo akhir pekan, Mawar lupa harga satuannya karena daftar harganya hilang. Karena tidak ada koefisien yang sama, ia memakai <b>metode campuran</b>: eliminasi dulu untuk mendapat satu variabel, lalu substitusi untuk mendapat variabel lainnya. Misalkan x = harga kaos dan y = harga topi (ribu rupiah).</p>`,
+    q: [MC("Model matematika yang tepat adalah ...", ["2x + 3y = 190 dan 3x + 2y = 210", "3x + 2y = 190 dan 2x + 3y = 210", "2x + 3y = 210 dan 3x + 2y = 190"], 0, "Raka: 2 kaos + 3 topi = 190, Sinta: 3 kaos + 2 topi = 210."),
+      { t: "Eliminasi: samakan koefisien y", d: "Koefisien y adalah 3 dan 2, KPK-nya 6.", q: "Persamaan ① dikali berapa dan ② dikali berapa agar koefisien y sama?", l: ["① ×", "② ×"], a: [2, 3], h: "6 ÷ 3 dan 6 ÷ 2.", e: "① × 2: 4x + 6y = 380 dan ② × 3: 9x + 6y = 630." },
+      { t: "Eliminasi: cari x", q: "Kurangkan ② dengan ①: 5x = 250. Berapa ribu rupiah harga satu kaos?", l: ["x ="], a: [50], e: "x = 250 ÷ 5 = 50, jadi kaos Rp50.000." },
+      { t: "Substitusi: cari y", d: "Sekarang gunakan <b>substitusi</b>: masukkan x = 50 ke persamaan ①: 2(50) + 3y = 190.", q: "Berapa ribu rupiah harga satu topi?", l: ["y ="], a: [30], h: "3y = 190 − 100.", e: "3y = 90, jadi y = 30 dan topi Rp30.000. Eliminasi lalu substitusi inilah metode campuran." },
+      { t: "Hitung promo", q: "Berapa ribu rupiah total harga 5 kaos dan 4 topi?", l: ["Rp"], a: [370], e: "5(50) + 4(30) = 250 + 120 = 370, yaitu Rp370.000." }] },
+  { t: "Kasus 5 · Rahasia Umur Ibu dan Rani", m: "Metode Substitusi", s: `<p>Saat membuka album foto, Rani menemukan foto ulang tahunnya yang pertama bersama Ibu. “Bu, sekarang umur kita kalau dijumlahkan 48 tahun, ya?” tanya Rani. Ibu tersenyum, “Betul, dan umur Ibu tepat tiga kali umurmu.”</p><p>Rani ingin tahu umur mereka masing-masing. Misalkan x = umur Ibu dan y = umur Rani. Perhatikan bahwa persamaan kedua sudah berbentuk x = 3y, sehingga cocok untuk metode substitusi.</p>`,
+    q: [MC("Model matematika yang tepat adalah ...", ["x + y = 48 dan x = 3y", "x + y = 48 dan y = 3x", "x − y = 48 dan x = 3y"], 0, "Jumlah umur 48 dan umur Ibu tiga kali umur Rani."),
+      { t: "Substitusikan", d: "Ganti x pada x + y = 48 dengan 3y: <b>3y + y = 48</b>.", q: "Berapa umur Rani (y)?", l: ["y ="], a: [12], e: "4y = 48, jadi y = 12 tahun." },
+      { t: "Cari umur Ibu", q: "Berapa umur Ibu (x = 3y)?", l: ["x ="], a: [36], e: "x = 3 × 12 = 36 tahun." },
+      { t: "Tantangan", q: "Berapa tahun lagi umur Ibu tepat dua kali umur Rani?", l: ["tahun"], a: [12], h: "Selesaikan 36 + t = 2(12 + t).", e: "36 + t = 24 + 2t, sehingga t = 12. Saat itu Ibu 48 tahun dan Rani 24 tahun." }] }
+];
+CS.forEach((c, i) => Q["c" + i] = c.q);
+function rKasus() {
+  $("mBody").innerHTML = `<p>Ada 5 cerita. Buka satu per satu dan bantu para tokohnya menyelesaikan masalah memakai SPLDV. Metode yang dipakai tertulis pada setiap kasus.</p>` +
+    CS.map((c, i) => `<details class="case"${i === 0 ? " open" : ""}><summary>${c.t}<span class="badge">${c.m}</span></summary><div class="story">${c.s}</div><div id="q_c${i}"></div></details>`).join("");
+  CS.forEach((c, i) => qr("c" + i));
+}
+
+/* ---- 04 VIDEO ---- */
+const VD = [["Konsep Dasar SPLDV", "konsep", "9QgoJOAMR6Q"], ["Metode Grafik · Video 1", "grafik", "lPwmkh2-zeM"], ["Metode Grafik · Video 2", "grafik", "YvO10TucPT0"],
+["Metode Eliminasi · Video 1", "eliminasi", "oID6BRAdS54"], ["Metode Eliminasi · Video 2", "eliminasi", "85gLsvtxzbQ"], ["Metode Substitusi · Video 1", "substitusi", "0JyGMHV9iiA"],
+["Metode Substitusi · Video 2", "substitusi", "GsKWgIeTwX4"], ["Metode Campuran · Video 1", "campuran", "LXi-qVAfQIU"], ["Metode Campuran · Video 2", "campuran", "pNN3iWEsf9o"]];
+let VF = "semua";
+function rVideo() {
+  const L = ["semua", "konsep", "grafik", "eliminasi", "substitusi", "campuran"];
+  $("mBody").innerHTML = `<p>Tonton video berikut untuk memperdalam pemahamanmu. Video akan terbuka di YouTube pada tab baru.</p>
+  <div class="level-tabs">${L.map(l => `<button class="${VF === l ? "active" : ""}" onclick="VF='${l}';rVideo()">${l[0].toUpperCase() + l.slice(1)}</button>`).join("")}</div>
+  <div class="vgrid">${VD.filter(v => VF === "semua" || v[1] === VF).map(v => `<a class="vcard" href="https://www.youtube.com/watch?v=${v[2]}" target="_blank" rel="noopener"><img loading="lazy" alt="" src="https://img.youtube.com/vi/${v[2]}/hqdefault.jpg" onerror="this.style.display='none'"><div><b>${v[0]}</b><span>▶ Tonton di YouTube</span></div></a>`).join("")}</div>`;
+}
+
+function openLesson(k) {
+  k = ({ pengertian: "konsep", model: "konsep", metode: "metode", grafik: "metode", substitusi: "metode", eliminasi: "metode", penerapan: "kasus" })[k] || k;
+  const T = { konsep: ["Pemahaman Konsep", rKonsep], metode: ["Metode Penyelesaian", () => { MS = mkSys(); MM = 0; rMetode(); }], kasus: ["Studi Kasus", rKasus], video: ["Rekomendasi Video", rVideo] }[k];
+  if (!T) return;
+  const d = $("lessonDetail");
+  d.innerHTML = `<article class="content-card"><div class="mp-head"><h2 style="margin:0">${T[0]}</h2><button class="back-btn" style="padding:0" onclick="$('lessonDetail').innerHTML=''">✕ Tutup</button></div><div id="mBody"></div></article>`;
+  T[1]();
+  showPage("materi");
+  setTimeout(() => d.scrollIntoView({ behavior: "smooth", block: "start" }), 100);
+}
+
+/* ================= NAVIGASI ================= */
+function showPage(id) {
+  document.querySelectorAll(".page").forEach(p => p.classList.toggle("active", p.id === id));
+  document.querySelectorAll(".nav-links button").forEach(b => b.classList.toggle("active", b.dataset.page === id));
+  $("navLinks").classList.remove("open");
+  if (id === "evaluasi") renderEvaluation();
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+$("menuToggle").addEventListener("click", () => $("navLinks").classList.toggle("open"));
+
+function playWelcome() {
+  if (!("speechSynthesis" in window)) { alert("Browser ini belum mendukung fitur suara."); return; }
+  window.speechSynthesis.cancel();
+  const u = new SpeechSynthesisUtterance(welcomeText);
+  u.lang = "id-ID"; u.rate = .92; u.pitch = 1;
+  const btn = $("soundButton");
+  btn.textContent = "🔊 Sedang Memutar...";
+  u.onend = u.onerror = () => btn.textContent = "🔊 Dengarkan Sambutan";
+  window.speechSynthesis.speak(u);
+}
+
+/* ================= LATIHAN ================= */
+function startQuiz(level) {
+  restoreQuizCard();
+  currentLevel = level; currentQuestion = 0; selectedAnswer = null; answered = false; currentScore = 0;
+  document.querySelectorAll(".level-tabs button[data-level]").forEach(b => b.classList.toggle("active", b.dataset.level === level));
+  renderQuestion();
+}
+function renderQuestion() {
+  const list = levels[currentLevel], item = list[currentQuestion];
+  $("levelLabel").textContent = "Tingkat " + ({ dasar: "Dasar", menengah: "Menengah", hots: "HOTS" }[currentLevel]);
+  $("questionCount").textContent = `Soal ${currentQuestion + 1} dari ${list.length}`;
+  $("progressBar").style.width = (currentQuestion / list.length * 100) + "%";
+  $("questionText").textContent = item.q;
+  $("options").innerHTML = item.o.map((opt, i) => `<button class="option" onclick="chooseAnswer(${i})">${String.fromCharCode(65 + i)}. ${opt}</button>`).join("");
+  $("feedback").className = "feedback"; $("feedback").textContent = "";
+  $("nextButton").disabled = true; $("nextButton").textContent = "Periksa Jawaban";
+  selectedAnswer = null; answered = false;
+}
+function chooseAnswer(index) {
+  if (answered) return;
+  selectedAnswer = index;
+  document.querySelectorAll(".option").forEach((b, i) => b.classList.toggle("selected", i === index));
+  $("nextButton").disabled = false;
+}
+function nextQuestion() {
+  const list = levels[currentLevel], item = list[currentQuestion];
+  if (!answered) {
+    if (selectedAnswer === null) return;
+    answered = true;
+    const correct = selectedAnswer === item.a;
+    if (correct) currentScore++;
+    document.querySelectorAll(".option").forEach((b, i) => {
+      if (i === item.a) b.classList.add("correct");
+      else if (i === selectedAnswer) b.classList.add("wrong");
+    });
+    const fb = $("feedback");
+    fb.className = "feedback show " + (correct ? "good" : "bad");
+    fb.textContent = (correct ? "Benar! " : "Belum tepat. ") + item.e;
+    $("nextButton").textContent = currentQuestion === list.length - 1 ? "Lihat Hasil" : "Soal Berikutnya";
+    return;
+  }
+  if (currentQuestion < list.length - 1) { currentQuestion++; renderQuestion(); } else finishQuiz();
+}
+function finishQuiz() {
+  const score = Math.round(currentScore / levels[currentLevel].length * 100);
+  const history = JSON.parse(localStorage.getItem("titikResults") || "[]");
+  history.push({ level: currentLevel, score, date: new Date().toLocaleString("id-ID") });
+  localStorage.setItem("titikResults", JSON.stringify(history));
+  $("quizCard").innerHTML = `<div style="text-align:center;padding:24px 5px"><div style="font-size:44px">🎉</div><h2 style="color:var(--navy)">Latihan Selesai!</h2><p>Nilai latihan tingkat ${currentLevel.toUpperCase()} kamu:</p><div style="font-size:54px;font-weight:900;color:var(--green)">${score}</div><p>Kamu menjawab benar ${currentScore} dari ${levels[currentLevel].length} soal.</p><button class="primary" onclick="startQuiz('${currentLevel}')">Ulangi Latihan</button> <button class="secondary" onclick="showPage('evaluasi')">Lihat Evaluasi</button></div>`;
+}
+function restoreQuizCard() {
+  $("quizCard").innerHTML = `<div class="quiz-top"><span id="levelLabel"></span><span id="questionCount"></span></div><div class="progress"><span id="progressBar"></span></div><div class="tag">Pilih satu jawaban yang paling tepat</div><div class="question" id="questionText"></div><div class="options" id="options"></div><div class="feedback" id="feedback"></div><div class="quiz-actions"><button class="secondary" onclick="showPage('materi')">Buka Materi</button><button class="primary" id="nextButton" onclick="nextQuestion()" disabled>Periksa Jawaban</button></div>`;
+}
+
+/* ================= EVALUASI ================= */
+function renderEvaluation() {
+  const data = JSON.parse(localStorage.getItem("titikResults") || "[]");
+  $("totalAttempt").textContent = data.length;
+  $("averageScore").textContent = data.length ? Math.round(data.reduce((a, b) => a + b.score, 0) / data.length) : "–";
+  $("bestScore").textContent = data.length ? Math.max(...data.map(x => x.score)) : "–";
+  const names = { dasar: "Dasar", menengah: "Menengah", hots: "HOTS" };
+  const history = $("historyList");
+  if (!data.length) { history.className = "empty"; history.textContent = "Belum ada riwayat pengerjaan."; }
+  else {
+    history.className = "";
+    history.innerHTML = [...data].reverse().map(x => `<div style="display:flex;justify-content:space-between;gap:10px;border-bottom:1px solid var(--line);padding:10px 0;font-size:13px"><span>${names[x.level]} · ${x.date}</span><strong style="color:var(--blue)">${x.score}/100</strong></div>`).join("");
+  }
+  drawChart(data);
+}
+function drawChart(data) {
+  const canvas = $("resultChart"), empty = $("chartEmpty"), ctx = canvas.getContext("2d");
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  if (!data.length) { empty.style.display = "block"; canvas.style.display = "none"; return; }
+  empty.style.display = "none"; canvas.style.display = "block";
+  canvas.width = canvas.clientWidth * devicePixelRatio; canvas.height = canvas.clientHeight * devicePixelRatio;
+  ctx.scale(devicePixelRatio, devicePixelRatio);
+  const cw = canvas.clientWidth, ch = canvas.clientHeight;
+  const labels = ["Dasar", "Menengah", "HOTS"], keys = ["dasar", "menengah", "hots"];
+  const values = keys.map(k => { const a = data.filter(d => d.level === k); return a.length ? a.reduce((s, d) => s + d.score, 0) / a.length : 0; });
+  const left = 38, right = 12, top = 18, bottom = 34, plotH = ch - top - bottom, plotW = cw - left - right;
+  ctx.font = "11px Arial"; ctx.textAlign = "right"; ctx.fillStyle = "#8291a3";
+  for (let n = 0; n <= 100; n += 20) {
+    const y = top + plotH - (n / 100) * plotH;
+    ctx.fillText(n, left - 8, y + 4);
+    ctx.strokeStyle = "#e9eff5"; ctx.beginPath(); ctx.moveTo(left, y); ctx.lineTo(cw - right, y); ctx.stroke();
+  }
+  const slot = plotW / 3, barW = Math.min(48, slot * .48);
+  values.forEach((v, i) => {
+    const bh = plotH * v / 100, x = left + slot * i + (slot - barW) / 2, y = top + plotH - bh;
+    ctx.fillStyle = ["#75a9df", "#f1c56a", "#68b78e"][i];
+    ctx.beginPath(); ctx.roundRect(x, y, barW, bh, 6); ctx.fill();
+    ctx.fillStyle = "#52677e"; ctx.textAlign = "center";
+    ctx.fillText(data.some(d => d.level === keys[i]) ? Math.round(v) : "–", x + barW / 2, y - 7);
+    ctx.fillText(labels[i], x + barW / 2, ch - 10);
+  });
+}
+function clearResults() {
+  if (confirm("Hapus semua riwayat latihan pada perangkat ini?")) { localStorage.removeItem("titikResults"); renderEvaluation(); }
+}
+
+/* ===== TITIK v2: revisi materi interaktif (fungsi bernama sama di atas tertimpa blok ini) ===== */
+const IG = {};
+const cy = (c, v) => (c == 1 ? "" : c) + v;
+const st2 = (k, n, v) => `<span class="stepper"><button onclick="igS('${k}','${n}',-1)">−</button><b>${v}</b><button onclick="igS('${k}','${n}',1)">+</button></span>`;
+const fx = (t, g, R, i) => typeof t == "function" ? t(g, R, i) : t || "";
+function igStart(k, S, s) { IG[k] = { k, S, i: 0, v: {}, s }; sel = null; igR(k); }
+function igAdv(g) { g.i++; g.v.msg = null; g.v.d = null; g.v.s = null; g.v.P = []; sel = null; }
+function igV(g, s) { const o = g.v.s = g.v.s || {}; s.vars.forEach(v => { if (o[v[0]] == null) o[v[0]] = v[1]; }); return o; }
+function igR(k) {
+  const g = IG[k], el = $("ig_" + k); let h = "";
+  g.S.forEach((s, i) => {
+    if (i > g.i) return; const dn = i < g.i;
+    h += `<div class="stp${dn ? " done" : ""}"><span class="sn">${dn ? "✓" : i + 1}</span><div class="sb"><b>${s.t}</b><div>${fx(s.d, g)}</div>`;
+    if (dn) { if (s.e) h += `<div class="msg good">${fx(s.e, g, (g.v.R || {})[i], i)}</div>`; }
+    else h += igA(k, s, g);
+    h += `</div></div>`;
+  });
+  el.innerHTML = h;
+}
+function igA(k, s, g) {
+  if (s.k == "n") return `<button class="primary" onclick="igN('${k}')">Paham, lanjut →</button>`;
+  if (s.k == "d") {
+    const d = g.v.d || {}, r = [...s.ch]; Object.values(d).forEach(v => r.splice(r.indexOf(v), 1));
+    return `<div>${r.map(chp).join("")}</div>` + s.sl.map((t, i) => `<div style="margin:5px 0">${t[0]} <span class="slot ${d[i] ? "ok" : ""}" ondragover="event.preventDefault()" ondrop="igD('${k}',${i},event)" onclick="igD('${k}',${i})">${d[i] || "· · ·"}</span></div>`).join("") + `<div id="igm_${k}"></div>`;
+  }
+  if (s.k == "s") { const V = igV(g, s); return `<p>${s.vars.map(v => v[3] + " " + st2(k, v[0], V[v[0]])).join(" &nbsp; ")}</p><div class="nota">${s.f(V, g)}</div>`; }
+  if (s.k == "i") return s.l.map((t, j) => `${t} <input class="mini" id="ig_${k}_${j}" type="number"> `).join("") + `<button class="secondary" onclick="igI('${k}')">Periksa</button><div id="igm_${k}"></div>`;
+  if (s.k == "g") return `<div class="msg ${g.v.msg ? "bad" : ""}">${g.v.msg || "👆 Ketuk titik pada grid."}</div>`;
+  return "";
+}
+function igN(k) { igAdv(IG[k]); igR(k); }
+function igD(k, i, e) {
+  if (e) e.preventDefault();
+  const g = IG[k], s = g.S[g.i], m = $("igm_" + k);
+  if (sel == null) { m.className = "msg"; m.textContent = "Pilih kartu dulu, lalu ketuk kotaknya."; return; }
+  g.v.d = g.v.d || {}; if (g.v.d[i]) return;
+  if (sel === s.sl[i][1]) { g.v.d[i] = sel; sel = null; if (Object.keys(g.v.d).length == s.sl.length) igAdv(g); igR(k); }
+  else { m.className = "msg bad"; m.textContent = "Belum pas, coba kartu lain 🤔"; }
+}
+function igS(k, n, d) {
+  const g = IG[k], s = g.S[g.i], V = igV(g, s), v = s.vars.find(x => x[0] == n);
+  V[n] = Math.min(v[2], Math.max(v[1], V[n] + d));
+  if (s.ok(V, g)) { (g.v.R = g.v.R || {})[g.i] = { ...V }; igAdv(g); }
+  igR(k);
+}
+function igI(k) {
+  const g = IG[k], s = g.S[g.i], m = $("igm_" + k), v = s.l.map((_, j) => $(`ig_${k}_${j}`).value);
+  if (v.every((x, j) => x !== "" && +x == s.a[j])) { igAdv(g); igR(k); }
+  else { m.className = "msg bad"; m.textContent = s.h; }
+}
+
+/* ---- grafik: titik bisa diubah dulu, terkunci setelah tepat ---- */
+function gClick(g, X, Y) { g.startsWith("ig:") ? igG(g.slice(3), X, Y) : gClick0(g, X, Y); }
+function igSvg(g) {
+  const s = g.s, L = g.v.L || {}, P = g.v.P || [], st = g.S[g.i], c = st && st.m == 2 ? "#3979bd" : "#e8575a";
+  const px = u => 30 + (u + 3) * 26, py = v => 330 - (v + 3) * 26; let ex = "";
+  if (P.length == 2 && (P[0][0] != P[1][0] || P[0][1] != P[1][1])) {
+    const [a, b] = P, dx = b[0] - a[0], dy = b[1] - a[1];
+    ex += `<line x1="${px(a[0] - 15 * dx)}" y1="${py(a[1] - 15 * dy)}" x2="${px(a[0] + 15 * dx)}" y2="${py(a[1] + 15 * dy)}" stroke="${c}" stroke-width="3" stroke-dasharray="6 5" clip-path="url(#gcl)" style="pointer-events:none"/>`;
+  }
+  P.forEach(p => ex += `<circle cx="${px(p[0])}" cy="${py(p[1])}" r="6" fill="${c}" stroke="#fff" stroke-width="2.5" style="pointer-events:none"/><text x="${px(p[0]) + 8}" y="${py(p[1]) - 8}" font-size="10" font-weight="700" fill="${c}" style="pointer-events:none">(${fm(p[0])}, ${fm(p[1])})</text>`);
+  return gSvg(s, { l1: L[1], l2: L[2], cl: "ig:" + g.k }).replace(/<\/svg>$/, ex + "</svg>");
+}
+function igG(k, X, Y) {
+  const g = IG[k], s = g.S[g.i]; if (!s || s.k != "g") return;
+  if (s.m == "x") {
+    if (X == g.s.x && Y == g.s.y) igAdv(g); else g.v.msg = `Titik (${X}, ${Y}) belum tepat. Cari titik yang dilewati kedua garis sekaligus.`;
+    igR(k); return;
+  }
+  const P = g.v.P = g.v.P || [];
+  if (!P.some(p => p[0] == X && p[1] == Y)) { P.push([X, Y]); if (P.length > 2) P.shift(); }
+  const [a, b, c] = s.m == 1 ? [g.s.a1, g.s.b1, g.s.c1] : [g.s.a2, g.s.b2, g.s.c2];
+  const bad = P.filter(p => a * p[0] + b * p[1] != c);
+  if (P.length == 2 && !bad.length) { (g.v.L = g.v.L || {})[s.m] = P.slice(); igAdv(g); }
+  else g.v.msg = P.length < 2 && !bad.length ? "Bagus! Pilih satu titik lagi." : bad.length ? `Titik ${bad.map(p => `(${fm(p[0])}, ${fm(p[1])})`).join(" dan ")} tidak dilalui garis ${s.m}. Coba masukkan x ke persamaan, hitung y, lalu ketuk titiknya. Kamu boleh mengganti titik.` : "Dua titik harus berbeda.";
+  igR(k);
+}
+function gS(s) {
+  const e1 = eq(s.a1, s.b1, s.c1), e2 = eq(s.a2, s.b2, s.c2);
+  const pts = (a, b) => [[s.x - b, s.y + a], [s.x + b, s.y - a]];
+  const A = pts(s.a1, s.b1), B = pts(s.a2, s.b2), pr = p => `(${fm(p[0])}, ${fm(p[1])})`;
+  const tab = (n, e, a, b, P) => ({ t: `Cari dua titik garis ${n}`, k: "i", d: `Garis ${n}: <b>${e}</b>.<br>Untuk menggambar garis lurus, kita cukup butuh <b>dua titik</b>. Caranya: pilih nilai x, masukkan ke persamaan, lalu hitung y. Nilai x sudah kupilihkan.`, l: [`Titik A, untuk x = ${fm(P[0][0])}, y =`, `Titik B, untuk x = ${fm(P[1][0])}, y =`], a: [P[0][1], P[1][1]], h: `Ganti x dengan ${fm(P[0][0])} pada ${e}, lalu cari y. Lakukan juga untuk x = ${fm(P[1][0])}.`, e: `Titik A ${pr(P[0])} dan titik B ${pr(P[1])}. Tulis sebagai pasangan (x, y).` });
+  return [
+    { t: "Ide dasar", k: "n", d: `Persamaan linear dua variabel kalau digambar jadi <b>garis lurus</b>. Dua persamaan berarti dua garis, dan jawabannya ada di <b>titik potongnya</b>.<div class="flow"><b>Alur:</b><span>Cari 2 titik garis ①</span><b>→</b><span>Letakkan di grid</span><b>→</b><span>Ulangi untuk garis ②</span><b>→</b><span>Cari titik potong</span></div>Cara membaca titik <b>(x, y)</b>: x berarti geser ke kanan dari titik 0, y berarti naik ke atas.` },
+    tab(1, e1, s.a1, s.b1, A),
+    { t: "Letakkan titik garis ①", k: "g", m: 1, d: g => `Ketuk kotak pada grid untuk titik A ${pr(A[0])} dan B ${pr(A[1])}. Garis putus-putus muncul mengikuti titikmu. Kalau salah, ketuk titik lain; garis terkunci begitu kedua titik tepat.` + igSvg(g), e: "Garis ① terkunci. Dua titik sudah cukup untuk menarik sebuah garis lurus." },
+    tab(2, e2, s.a2, s.b2, B),
+    { t: "Letakkan titik garis ②", k: "g", m: 2, d: g => `Sekarang titik A ${pr(B[0])} dan B ${pr(B[1])} untuk garis ②. Caranya sama seperti tadi.` + igSvg(g), e: "Garis ② juga terkunci. Kedua garis sekarang ada di bidang." },
+    { t: "Temukan titik potong", k: "g", m: "x", d: g => `Kedua garis sudah tidak bisa diubah. Perhatikan di mana keduanya bertemu, lalu ketuk titik itu. Titik tersebut dilalui kedua garis, jadi memenuhi kedua persamaan.` + igSvg(g), e: g => `Kedua garis berpotongan di (${s.x}, ${s.y}).` + gSvg(s, { l1: 1, l2: 1, f: 1 }) },
+    { t: "Periksa jawabanmu", k: "n", d: `Masukkan (${s.x}, ${s.y}) ke kedua persamaan.<br>① ${s.a1}(${s.x}) + (${s.b1})(${s.y}) = ${s.c1} ✓<br>② ${s.a2}(${s.x}) + (${s.b2})(${s.y}) = ${s.c2} ✓` },
+    { t: "Kesimpulan: cara kerja metode grafik", k: "f", d: `<div class="defbox"><ol><li>Untuk tiap persamaan, pilih dua nilai x dan hitung y-nya, sehingga dapat dua titik.</li><li>Letakkan titik-titik itu pada bidang koordinat dan tarik garis lurus.</li><li>Titik potong kedua garis adalah penyelesaian, karena hanya titik itu yang dilalui kedua garis sekaligus.</li><li>Periksa dengan memasukkan (x, y) ke kedua persamaan.</li></ol><p>Penyelesaiannya: <b>{(${s.x}, ${s.y})}</b>. Kelebihannya mudah dibayangkan, tetapi kurang teliti kalau titik potongnya bukan bilangan bulat.</p><button class="secondary" onclick="newM()">🎲 Coba soal baru</button></div>` }
+  ];
+}
+
+/* ---- soal cerita acak untuk eliminasi & substitusi ---- */
+function mkSt() {
+  let s;
+  do { const x = 2 + R(6), y = 2 + R(6), b1 = 1 + R(3), a2 = 2 + R(3), b2 = 1 + R(4); s = { x, y, a1: 1, b1, c1: x + b1 * y, a2, b2, c2: a2 * x + b2 * y }; }
+  while (s.b2 == s.b1 || s.b2 - s.a2 * s.b1 == 0);
+  return s;
+}
+function baseSteps(s) {
+  const I = "📒", J = "✏️", e1 = eq(s.a1, s.b1, s.c1), e2 = eq(s.a2, s.b2, s.c2);
+  const nota = `<div class="row"><div class="nota"><b>🧾 Nota Ani</b><br>${I.repeat(s.a1)} + ${J.repeat(s.b1)} = Rp${s.c1}.000</div><div class="nota"><b>🧾 Nota Budi</b><br>${I.repeat(s.a2)} + ${J.repeat(s.b2)} = Rp${s.c2}.000</div></div>`;
+  return [
+    { t: "Beri nama harga yang belum diketahui", k: "d", d: nota + `Harga 📒 dan ✏️ belum diketahui. Pindahkan kartu huruf ke tempat yang sesuai.`, sl: [["📒 = harga 1 buku →", "x"], ["✏️ = harga 1 pensil →", "y"]], ch: ["x", "y", "z"], e: "Huruf x dan y mewakili nilai yang belum diketahui. Itulah variabel." },
+    { t: "Ubah nota jadi persamaan", k: "d", d: `Pindahkan persamaan yang cocok ke tiap nota (dalam ribu rupiah).`, sl: [["Nota Ani →", e1], ["Nota Budi →", e2]], ch: [e1, e2, eq(s.a1, s.b1 + 1, s.c1), eq(s.a2 + 1, s.b2, s.c2)], e: `Model matematikanya:<br>① ${e1}<br>② ${e2}` }
+  ];
+}
+const checkStep = s => ({ t: "Periksa jawabanmu", k: "n", d: `Masukkan ke nota Budi: ${s.a2}(${s.x}) + ${s.b2}(${s.y}) = ${s.c2} ✓. Harga buku Rp${s.x}.000 dan pensil Rp${s.y}.000 cocok dengan kedua nota.` });
+const again = `<button class="secondary" onclick="newM()">🎲 Coba soal baru</button>`;
+
+function eS2(s) {
+  const { x, y, a1, b1, c1, a2, b2, c2 } = s, L = lcm(b1, b2), m1 = L / b1, m2 = L / b2;
+  const A1 = a1 * m1, B = b1 * m1, C1 = c1 * m1, A2 = a2 * m2, C2 = c2 * m2, A = A1 - A2, C = C1 - C2;
+  return [...baseSteps(s),
+    { t: "Samakan koefisien y", k: "s", vars: [["p", 1, 6, "① dikali"], ["q", 1, 6, "② dikali"]],
+      d: `Kita mau menghilangkan ✏️ (y). Gandakan kedua persamaan sampai koefisien y sama besar, dengan pengali sekecil mungkin (pakai KPK).`,
+      f: V => `① × ${V.p}: ${eq(a1 * V.p, b1 * V.p, c1 * V.p)}<br>② × ${V.q}: ${eq(a2 * V.q, b2 * V.q, c2 * V.q)}<br>${b1 * V.p == b2 * V.q ? "Sama besar, tapi masih bisa lebih kecil 🙂" : "Koefisien y belum sama ❌"}`,
+      ok: V => b1 * V.p == B && b2 * V.q == B, e: `① × ${m1}: ${eq(A1, B, C1)}<br>② × ${m2}: ${eq(A2, B, C2)}` },
+    { t: "Hilangkan y", k: "d", d: `① ${eq(A1, B, C1)}<br>② ${eq(A2, B, C2)}`, sl: [["Agar ✏️ hilang, ① dan ② harus →", "dikurangkan"]], ch: ["dijumlahkan", "dikurangkan"], h: "Suku y bertanda sama, jadi dikurangkan.", e: `① − ②: ${fm(A)}x = ${fm(C)}` },
+    { t: "Cari harga buku (x)", k: "s", vars: [["x", 0, 12, "x ="]], d: `Sisa satu persamaan: <b>${fm(A)}x = ${fm(C)}</b>. Atur x sampai cocok.`, f: V => `${fm(A)} × ${V.x} = ${fm(A * V.x)} ${A * V.x == C ? "✅" : "❌"} (harus ${fm(C)})`, ok: V => A * V.x == C, e: `x = ${x}, buku Rp${x}.000.` },
+    { t: "Cari harga pensil (y)", k: "s", vars: [["y", 0, 12, "y ="]], d: `Masukkan x = ${x} ke persamaan ①: ${a1}(${x}) + ${b1}y = ${c1}.`, f: V => `${a1 * x} + ${b1}(${V.y}) = ${a1 * x + b1 * V.y} ${a1 * x + b1 * V.y == c1 ? "✅" : "❌"} (harus ${c1})`, ok: V => a1 * x + b1 * V.y == c1, e: `y = ${y}, pensil Rp${y}.000.` },
+    checkStep(s),
+    { t: "Kesimpulan: cara kerja eliminasi", k: "f", d: `<div class="defbox"><ol><li>Misalkan harga yang dicari dengan variabel, lalu susun dua persamaan.</li><li>Samakan koefisien salah satu variabel (pakai KPK).</li><li>Jumlahkan atau kurangkan kedua persamaan. Variabel dengan koefisien sama besar akan <b>hilang</b>.</li><li>Selesaikan persamaan satu variabel yang tersisa.</li><li>Masukkan hasilnya untuk mencari variabel lain, lalu periksa.</li></ol><p>Jika tanda suku sama → dikurangkan, jika berlawanan → dijumlahkan. Penyelesaiannya <b>{(${x}, ${y})}</b>.</p>${again}</div>` }
+  ];
+}
+function sS2(s) {
+  const { x, y, b1, c1, a2, b2, c2 } = s, t = cy(b1, "y"), X = `${c1} − ${t}`, K1 = b2 - a2 * b1, K2 = c2 - a2 * c1, R2 = `${a2}(${X}) + ${cy(b2, "y")} = ${c2}`;
+  return [...baseSteps(s),
+    { t: "Nyatakan 📒 dengan ✏️", k: "d", d: `Dari ① <b>${eq(1, b1, c1)}</b>, pindahkan ${t} ke ruas kanan.`, sl: [["x =", X]], ch: [X, `${c1} + ${t}`, `${t} − ${c1}`], e: `Sekarang 📒 bisa diganti dengan (${X}).` },
+    { t: "Pindahkan ke nota ②", k: "d", d: `Pada ② <b>${eq(a2, b2, c2)}</b>, ganti x dengan (${X}). Pilih hasil penggantian yang benar.`, sl: [["② setelah diganti →", R2]], ch: [R2, `${a2}(${c1} + ${t}) + ${cy(b2, "y")} = ${c2}`, `(${X}) + ${cy(b2, "y")} = ${c2}`], e: `${R2}<br>Sekarang tinggal satu variabel: y.` },
+    { t: "Sederhanakan", k: "i", d: `Kalikan ${a2} ke dalam kurung, gabungkan suku y, lalu pindahkan konstanta ke ruas kanan sehingga bentuknya (koefisien) y = (ruas kanan).`, l: ["koefisien y =", "ruas kanan ="], a: [K1, K2], h: `Hasil kali: ${a2 * c1} − ${a2 * b1}y + ${b2}y = ${c2}. Gabungkan suku y, lalu pindahkan ${a2 * c1}.`, e: `${fm(K1)}y = ${fm(K2)}` },
+    { t: "Cari harga pensil (y)", k: "s", vars: [["y", 0, 12, "y ="]], d: `Atur y sampai <b>${fm(K1)}y = ${fm(K2)}</b>.`, f: V => `${fm(K1)} × ${V.y} = ${fm(K1 * V.y)} ${K1 * V.y == K2 ? "✅" : "❌"} (harus ${fm(K2)})`, ok: V => K1 * V.y == K2, e: `y = ${y}, pensil Rp${y}.000.` },
+    { t: "Cari harga buku (x)", k: "s", vars: [["x", 0, 12, "x ="]], d: `Masukkan y = ${y} ke kartu tadi: x = ${X}.`, f: V => `${c1} − ${b1}(${y}) = ${c1 - b1 * y}. x kamu = ${V.x} ${V.x == c1 - b1 * y ? "✅" : "❌"}`, ok: V => V.x == c1 - b1 * y, e: `x = ${x}, buku Rp${x}.000.` },
+    checkStep(s),
+    { t: "Kesimpulan: cara kerja substitusi", k: "f", d: `<div class="defbox"><ol><li>Misalkan variabelnya, lalu susun dua persamaan.</li><li>Dari salah satu persamaan, nyatakan satu variabel dengan variabel lain (pilih yang koefisiennya paling sederhana).</li><li><b>Gantikan</b> bentuk itu ke persamaan yang satunya, sehingga tersisa satu variabel.</li><li>Selesaikan, lalu masukkan hasilnya ke bentuk tadi untuk mencari variabel kedua.</li><li>Periksa pada kedua persamaan.</li></ol><p>Penyelesaiannya <b>{(${x}, ${y})}</b>. Cocok kalau ada variabel yang koefisiennya 1.</p>${again}</div>` }
+  ];
+}
+function selM(m) { MM = m; if (m) MS = m == 1 ? mkSys() : mkSt(); rMetode(); }
+function newM() { selM(MM); }
+function rMetode() {
+  const nm = ["📈 Metode 1 · Grafik", "✂️ Metode 2 · Eliminasi", "🔁 Metode 3 · Substitusi"];
+  $("mBody").innerHTML = `<p>Kamu belajar dengan <b>mengerjakan langsung</b>: ketuk titik, pindahkan kartu, atur angka. Soalnya selalu acak, jadi bebas diulang.</p><div class="row">${nm.map((t, i) => `<button class="${MM == i + 1 ? "primary" : "secondary"}" onclick="selM(${i + 1})">${t}</button>`).join("")}</div>` + (MM ? `<div id="ig_mg" style="margin-top:12px"></div>` : `<div class="empty" style="margin-top:14px">Pilih satu metode untuk mulai.</div>`);
+  if (MM) igStart("mg", [null, gS, eS2, sS2][MM](MS), MS);
+}
+
+/* ---- pemahaman konsep: tanpa soal, ditemukan lewat kegiatan ---- */
+function rKonsep() {
+  $("mBody").innerHTML = `<p>Di sini kamu tidak langsung diberi rumus. Ikuti kegiatannya dari atas, dan pelan-pelan kamu akan menemukan sendiri apa itu SPLDV.</p><div id="ig_kn"></div>`;
+  const nt = (a, b, ok) => `🧾 2×🍎 + 🍌: 2×Rp${a}.000 + Rp${b}.000 = Rp${2 * a + b}.000 ${ok ? "✅" : "❌"}`;
+  igStart("kn", [
+    { t: "Kenalan dengan variabel", k: "s", vars: [["g", 1, 9, "🍢 Harga 1 gorengan (ribu rupiah):"]], d: `Dinda membeli 3 gorengan dan membayar Rp6.000. Harga satu gorengan belum diketahui. Atur sampai cocok.`, f: V => `3 × Rp${V.g}.000 = Rp${3 * V.g}.000 ${3 * V.g == 6 ? "✅" : "❌"} (harus Rp6.000)`, ok: V => V.g == 2, e: `Harga yang tadinya belum diketahui boleh kita beri nama huruf, misalnya x, sehingga 3x = 6.000. Huruf <b>x</b> disebut <b>variabel</b>, angka <b>3</b> disebut <b>koefisien</b>, dan <b>6.000</b> disebut <b>konstanta</b>.` },
+    { t: "Kenali bagian persamaan", k: "d", d: DM.m1.p, sl: DM.m1.it, ch: DM.m1.ch, e: DM.m1.e },
+    { t: "Satu nota, banyak kemungkinan", k: "s", vars: [["a", 1, 8, "🍎 Apel Rp(ribu)"], ["b", 1, 8, "🍌 Pisang Rp(ribu)"]], d: `Di Warung Buah Bu Rani, Dito membeli 2 🍎 dan 1 🍌 dengan total Rp8.000. Harga satuan dirahasiakan. Atur harga sampai nota cocok, dan temukan minimal <b>2 pasangan berbeda</b>.`, f: (V, g) => nt(V.a, V.b, 2 * V.a + V.b == 8) + `<br>Pasangan yang sudah ketemu: <b>${(g.v.pairs || []).join(" · ") || "belum ada"}</b>`, ok: (V, g) => { const P = g.v.pairs = g.v.pairs || [], p = `(${V.a}.000 ; ${V.b}.000)`; if (2 * V.a + V.b == 8 && !P.includes(p)) P.push(p); return P.length >= 2; }, e: g => `Ada banyak pasangan harga yang cocok untuk satu nota: ${g.v.pairs.join(" · ")}. Jadi <b>satu persamaan dua variabel punya banyak penyelesaian</b>, belum cukup untuk memastikan harga.` },
+    { t: "Dua nota sekaligus", k: "s", vars: [["a", 1, 8, "🍎 Apel Rp(ribu)"], ["b", 1, 8, "🍌 Pisang Rp(ribu)"]], d: `Sari belanja di warung yang sama: 1 🍎 + 2 🍌 = Rp7.000. Sekarang kedua nota harus cocok bersamaan. Berapa pasangan harga yang bisa?`, f: V => nt(V.a, V.b, 2 * V.a + V.b == 8) + `<br>🧾 1×🍎 + 2×🍌: Rp${V.a}.000 + 2×Rp${V.b}.000 = Rp${V.a + 2 * V.b}.000 ${V.a + 2 * V.b == 7 ? "✅" : "❌"}`, ok: V => 2 * V.a + V.b == 8 && V.a + 2 * V.b == 7, e: `Hanya satu pasangan yang cocok: apel Rp3.000 dan pisang Rp2.000. Dua syarat yang harus dipenuhi bersamaan membuat jawabannya tepat satu.` },
+    { t: "Dari nota ke persamaan", k: "d", d: DM.m2.p, sl: DM.m2.it, ch: DM.m2.ch, e: DM.m2.e },
+    { t: "Menguji sebuah pasangan", k: "s", vars: [["x", 0, 9, "x ="], ["y", 0, 9, "y ="]], d: `Sistem: <b>x + y = 7</b> dan <b>x − y = 1</b>. Cari nilai x dan y yang membuat keduanya ✅.`, f: V => `x + y = ${V.x + V.y} ${V.x + V.y == 7 ? "✅" : "❌"} (harus 7)<br>x − y = ${V.x - V.y} ${V.x - V.y == 1 ? "✅" : "❌"} (harus 1)`, ok: V => V.x + V.y == 7 && V.x - V.y == 1, e: `Pasangan (4, 3) memenuhi keduanya. Pasangan yang memenuhi kedua persamaan sekaligus inilah yang disebut penyelesaian.` },
+    { t: "Simpulkan sendiri", k: "d", d: `Lengkapi kesimpulan dari semua kegiatan tadi dengan kartu yang tepat.`, sl: [["Satu persamaan dua variabel punya ... pasangan penyelesaian →", "banyak"], ["Supaya jawabannya tepat satu pasangan, dibutuhkan ... persamaan →", "dua"], ["Penyelesaian harus memenuhi ... persamaan sekaligus →", "kedua"]], ch: ["banyak", "dua", "kedua", "satu", "tiga"], e: "Tepat! Sekarang kita rapikan menjadi definisi yang utuh." },
+    { t: "Jadi, apa itu SPLDV?", k: "f", d: `<div class="defbox"><p style="margin-top:0"><b>Sistem Persamaan Linear Dua Variabel (SPLDV)</b> adalah kumpulan dua persamaan linear yang memuat dua variabel yang sama, dan keduanya harus dipenuhi secara bersamaan.</p><div class="formula">a₁x + b₁y = c₁<br>a₂x + b₂y = c₂</div><p><span class="tag">x, y = variabel</span><span class="tag">a₁, b₁, a₂, b₂ = koefisien</span><span class="tag">c₁, c₂ = konstanta</span></p><p><b>Linear</b> berarti variabelnya berpangkat satu dan tidak saling dikalikan (x² + y = 4 dan xy = 6 bukan linear).</p><p><b>Penyelesaian</b> SPLDV adalah pasangan (x, y) yang memenuhi kedua persamaan sekaligus. Pada warung buah: apel Rp3.000 dan pisang Rp2.000, ditulis {(3, 2)}.</p><p>Satu persamaan saja memberi banyak pasangan, sedangkan dua persamaan menyempitkannya menjadi (umumnya) satu pasangan.</p><button class="primary" onclick="openLesson('metode')">Lanjut ke Metode Penyelesaian →</button></div>` }
+  ], null);
+}
+
+/* ---- bank soal latihan: 30 soal per tingkat, tiap sesi 10 soal acak ---- */
+const shuf = a => { a = [...a]; for (let i = a.length - 1; i > 0; i--) { const j = R(i + 1); [a[i], a[j]] = [a[j], a[i]]; } return a; };
+const nopt = (v, f = n => n) => [v, ...[v + 1, v - 1, v + 2, v - 2, v + 3].filter(n => n > 0 && n != v).slice(0, 3)].map(f);
+const it = (q, v, e, f) => ({ q, o: nopt(v, f), e });
+const rp = n => `Rp${n}.000`, pr2 = (x, y) => `(${x}, ${y})`;
+const BANK = { dasar: [], menengah: [], hots: [] };
+[[2, 2, 1, 3], [3, 1, 2, 4], [4, 2, 1, 5], [1, 5, 2, 3], [3, 3, 2, 2], [5, 1, 3, 2], [2, 4, 3, 1], [4, 3, 2, 2], [1, 6, 4, 1], [3, 4, 1, 6]].forEach(([a, p, b, q]) => BANK.dasar.push(it(`Jika x = ${p} dan y = ${q}, nilai ${cy(a, "x")} + ${cy(b, "y")} adalah ...`, a * p + b * q, `Substitusi: ${a}(${p}) + ${b}(${q}) = ${a * p + b * q}.`)));
+[[5, 2], [6, 1], [7, 3], [4, 3], [8, 2], [9, 4], [6, 5], [7, 2], [10, 3], [5, 4]].forEach(([x, y]) => BANK.dasar.push({ q: `Manakah pasangan (x, y) yang merupakan penyelesaian dari x + y = ${x + y} dan x − y = ${x - y}?`, o: [pr2(x, y), pr2(y, x), pr2(x + 1, y + 1), pr2(x - 1, y - 1)], e: `${x} + ${y} = ${x + y} dan ${x} − ${y} = ${x - y}, jadi ${pr2(x, y)} memenuhi keduanya.` }));
+[[3, 2, 12], [5, 4, 20], [2, 7, 15], [4, 3, 18]].forEach(([a, b, c]) => [["koefisien x", a], ["koefisien y", b], ["konstanta", c]].forEach(([n, v]) => { if (BANK.dasar.length < 30) BANK.dasar.push({ q: `Pada persamaan ${cy(a, "x")} + ${cy(b, "y")} = ${c}, ${n} adalah ...`, o: [v, ...[a, b, c, a + b].filter(z => z != v).slice(0, 3)], e: `Koefisien adalah angka di depan variabel, konstanta adalah angka di ruas kanan. Jadi ${n} = ${v}.` }); }));
+const P10 = [[6, 4], [7, 3], [8, 2], [5, 4], [9, 3], [6, 2], [10, 4], [7, 5], [8, 6], [9, 5]];
+P10.forEach(([x, y], i) => BANK.menengah.push(it(`Diketahui x + y = ${x + y} dan x − y = ${x - y}. Nilai ${i < 5 ? "x" : "y"} adalah ...`, i < 5 ? x : y, `Jumlahkan kedua persamaan: 2x = ${2 * x}, sehingga x = ${x}. Lalu y = ${x + y} − ${x} = ${y}.`)));
+P10.forEach(([x, y], i) => BANK.menengah.push(it(`Diketahui 2x + y = ${2 * x + y} dan x + y = ${x + y}. Nilai ${i < 5 ? "y" : "x"} adalah ...`, i < 5 ? y : x, `Kurangkan persamaan pertama dengan kedua: x = ${x}. Maka y = ${x + y} − ${x} = ${y}.`)));
+[[2, 1], [3, 2], [4, 3], [5, 1], [6, 2], [3, 4], [4, 2], [5, 3], [2, 5], [6, 1]].forEach(([x, y], i) => BANK.menengah.push(it(`Harga 2 buku dan 1 pensil ${rp(2 * x + y)}, sedangkan 1 buku dan 1 pensil ${rp(x + y)}. Harga satu ${i < 5 ? "buku" : "pensil"} adalah ...`, i < 5 ? x : y, i < 5 ? `Kurangkan kedua persamaan: buku = ${2 * x + y} − ${x + y} = ${x} (ribu rupiah).` : `Kurangkan kedua persamaan: buku = ${x}. Maka pensil = ${x + y} − ${x} = ${y} (ribu rupiah).`, rp)));
+[[40, 12], [38, 10], [45, 15], [36, 9], [42, 14], [50, 18]].forEach(([a, b]) => BANK.hots.push(it(`Jumlah umur ayah dan anaknya ${a + b} tahun, sedangkan selisih umur mereka ${a - b} tahun. Umur anak adalah ... tahun.`, b, `Misalkan a = ayah dan b = anak: a + b = ${a + b} dan a − b = ${a - b}. Kurangkan: 2b = ${2 * b}, sehingga b = ${b}.`)));
+[[4, 3], [5, 2], [6, 4], [3, 5], [7, 3], [2, 6]].forEach(([r, s]) => BANK.hots.push(it(`Di kantin, 2 roti dan 3 susu berharga ${rp(2 * r + 3 * s)}, sedangkan 3 roti dan 2 susu berharga ${rp(3 * r + 2 * s)}. Berapa harga satu roti?`, r, `Misalkan r roti dan s susu (ribuan): 2r + 3s = ${2 * r + 3 * s} dan 3r + 2s = ${3 * r + 2 * s}. Eliminasi menghasilkan r = ${r}, jadi roti ${rp(r)}.`, rp)));
+[[8, 12], [6, 14], [10, 10], [5, 15], [9, 11], [7, 13]].forEach(([m, s]) => BANK.hots.push(it(`Tempat parkir berisi ${m + s} kendaraan berupa mobil (4 roda) dan sepeda motor (2 roda). Jumlah seluruh roda ${4 * m + 2 * s}. Banyak mobil adalah ...`, m, `m + s = ${m + s} dan 4m + 2s = ${4 * m + 2 * s}. Kurangkan persamaan kedua dengan 2 kali persamaan pertama: 2m = ${4 * m + 2 * s - 2 * (m + s)}, sehingga m = ${m}.`)));
+[[6, 10], [8, 4], [5, 12], [9, 6], [7, 8], [4, 14]].forEach(([m, s]) => BANK.hots.push(it(`Pak Budi memiliki ${m + s} koin pecahan Rp1.000 dan Rp500 dengan total Rp${(1000 * m + 500 * s).toLocaleString("id-ID")}. Banyak koin Rp1.000 adalah ...`, m, `m + s = ${m + s} dan 1.000m + 500s = ${1000 * m + 500 * s}. Kurangkan persamaan kedua dengan 500 kali persamaan pertama: 500m = ${1000 * m + 500 * s - 500 * (m + s)}, sehingga m = ${m}.`)));
+[[12, 8], [10, 6], [15, 9], [9, 5], [14, 7], [11, 4]].forEach(([p, l]) => BANK.hots.push(it(`Keliling persegi panjang ${2 * (p + l)} cm. Panjangnya ${p - l} cm lebih dari lebarnya. Panjang persegi panjang adalah ... cm.`, p, `p + l = ${p + l} dan p − l = ${p - l}. Jumlahkan: 2p = ${2 * p}, sehingga p = ${p}.`)));
+function startQuiz(level) {
+  restoreQuizCard();
+  levels[level] = shuf(BANK[level]).slice(0, 10).map(b => { const o = shuf(b.o); return { q: b.q, o, a: o.indexOf(b.o[0]), e: b.e }; });
+  currentLevel = level; currentQuestion = 0; selectedAnswer = null; answered = false; currentScore = 0;
+  document.querySelectorAll(".level-tabs button[data-level]").forEach(b => b.classList.toggle("active", b.dataset.level === level));
+  renderQuestion();
+}
+
+startQuiz("dasar");
+</script>
 </body>
 
 </html>
